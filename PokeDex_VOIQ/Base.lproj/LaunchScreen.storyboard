@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -13,15 +20,62 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedex.png" translatesAutoresizingMaskIntoConstraints="NO" id="pTZ-BZ-QUe">
+                                <rect key="frame" x="20" y="251" width="171" height="166"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="nnd-Tk-F1N"/>
+                                    <constraint firstAttribute="width" secondItem="pTZ-BZ-QUe" secondAttribute="height" multiplier="163:158" id="of8-wf-AYH"/>
+                                    <constraint firstAttribute="width" constant="171" id="xYD-2j-YJM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carlos David Parada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwK-1d-6W1">
+                                <rect key="frame" x="85" y="477" width="205" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="205" id="AcD-NE-sV8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="sBa-dW-wdT"/>
+                                    <constraint firstAttribute="height" constant="26" id="wbT-xp-1xS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voiq-logo-FINAL-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4K-mw-6hL">
+                                <rect key="frame" x="67" y="295" width="240" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S4K-mw-6hL" secondAttribute="height" multiplier="60:19" id="eBl-3D-w12"/>
+                                    <constraint firstAttribute="width" constant="240" id="gbq-Rh-qwB"/>
+                                    <constraint firstAttribute="height" constant="76" id="qHU-dw-ptJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S4K-mw-6hL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-1" id="2bv-rQ-0y9"/>
+                            <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-82" id="80O-yd-TOr"/>
+                            <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Vds-bq-1D2"/>
+                            <constraint firstItem="vwK-1d-6W1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Yy5-3V-EJV"/>
+                            <constraint firstItem="S4K-mw-6hL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kYM-1k-JKd"/>
+                            <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerX" secondItem="S4K-mw-6hL" secondAttribute="centerX" constant="-81.5" id="sZi-zP-DNg"/>
+                            <constraint firstItem="vwK-1d-6W1" firstAttribute="top" secondItem="pTZ-BZ-QUe" secondAttribute="bottom" constant="60" id="wcK-wj-stI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2bv-rQ-0y9"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pokedex.png" width="460" height="545"/>
+        <image name="voiq-logo-FINAL-1.png" width="600" height="202"/>
+    </resources>
 </document>

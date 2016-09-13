@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0F437C8A871EE8D8D1D62C25275551F0'
-               BlueprintName = 'Pods-PokeDex_VOIQ'
+               BlueprintIdentifier = 'FE2F1D7B9D9FCEA148517E4657B243F4'
+               BlueprintName = 'MBProgressHUD'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-PokeDex_VOIQ.a'>
+               BuildableName = 'libMBProgressHUD.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -4,5 +4,6 @@
 target 'PokeDex_VOIQ' do
 
   pod 'AFNetworking’
+pod 'MBProgressHUD'
 
 end
