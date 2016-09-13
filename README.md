@@ -11,4 +11,4 @@ iOS 8.3
 
 ## Lenguaje ##
 
-Objetive-C
+Objective-C
