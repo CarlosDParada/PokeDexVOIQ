@@ -34,6 +34,15 @@
 		D98F353B1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F352E1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png */; };
 		D98F353E1D87B89A00A52DE6 /* pokedex.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353D1D87B89A00A52DE6 /* pokedex.png */; };
 		D98F35401D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */; };
+		D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */; };
+		D9DF1C431D8A037E00C545B1 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */; };
+		D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */; };
+		D9DF1C4D1D8A04A200C545B1 /* cancel-4.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C4C1D8A04A200C545B1 /* cancel-4.png */; };
+		D9DF1C4F1D8A04A700C545B1 /* cancel-5.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C4E1D8A04A700C545B1 /* cancel-5.png */; };
+		D9DF1C511D8A04AF00C545B1 /* cancel-6.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C501D8A04AF00C545B1 /* cancel-6.png */; };
+		D9DF1C531D8A05ED00C545B1 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C521D8A05ED00C545B1 /* cancel.png */; };
+		D9DF1C551D8A05F100C545B1 /* cancel-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C541D8A05F100C545B1 /* cancel-2.png */; };
+		D9DF1C571D8A05FB00C545B1 /* cancel-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C561D8A05FB00C545B1 /* cancel-3.png */; };
 		D9E466881D88B6AA0031F13F /* PDV_NextPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */; };
 		D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E4668B1D88BB810031F13F /* NSDictionary+StripNSNulls.m */; };
 		D9E4668F1D88D31C0031F13F /* PDV_AllPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E4668E1D88D31C0031F13F /* PDV_AllPokemon.m */; };
@@ -100,6 +109,15 @@
 		D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voiq-logo-FINAL-1.png"; sourceTree = "<group>"; };
 		D98F35411D87BA8700A52DE6 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		D98F35421D87BA9F00A52DE6 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkmark.png; sourceTree = "<group>"; };
+		D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@2x.png"; sourceTree = "<group>"; };
+		D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@3x.png"; sourceTree = "<group>"; };
+		D9DF1C4C1D8A04A200C545B1 /* cancel-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-4.png"; sourceTree = "<group>"; };
+		D9DF1C4E1D8A04A700C545B1 /* cancel-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-5.png"; sourceTree = "<group>"; };
+		D9DF1C501D8A04AF00C545B1 /* cancel-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-6.png"; sourceTree = "<group>"; };
+		D9DF1C521D8A05ED00C545B1 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		D9DF1C541D8A05F100C545B1 /* cancel-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-2.png"; sourceTree = "<group>"; };
+		D9DF1C561D8A05FB00C545B1 /* cancel-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-3.png"; sourceTree = "<group>"; };
 		D9E466861D88B6AA0031F13F /* PDV_NextPokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_NextPokemon.h; sourceTree = "<group>"; };
 		D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_NextPokemon.m; sourceTree = "<group>"; };
 		D9E466891D88B8240031F13F /* PDV_Constans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDV_Constans.h; sourceTree = "<group>"; };
@@ -255,6 +273,7 @@
 		D98F353C1D87B83100A52DE6 /* Icone */ = {
 			isa = PBXGroup;
 			children = (
+				D9DF1C4B1D8A049800C545B1 /* Check */,
 				D9E4669B1D893E9C0031F13F /* cualpokemon.jpg */,
 				D98F35221D87B82A00A52DE6 /* Icon-App-29x29@1x.png */,
 				D98F35231D87B82A00A52DE6 /* Icon-App-29x29@2x.png */,
@@ -271,6 +290,22 @@
 				D98F352E1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png */,
 			);
 			name = Icone;
+			sourceTree = "<group>";
+		};
+		D9DF1C4B1D8A049800C545B1 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				D9DF1C521D8A05ED00C545B1 /* cancel.png */,
+				D9DF1C541D8A05F100C545B1 /* cancel-2.png */,
+				D9DF1C561D8A05FB00C545B1 /* cancel-3.png */,
+				D9DF1C4C1D8A04A200C545B1 /* cancel-4.png */,
+				D9DF1C4E1D8A04A700C545B1 /* cancel-5.png */,
+				D9DF1C501D8A04AF00C545B1 /* cancel-6.png */,
+				D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */,
+				D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */,
+				D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */,
+			);
+			name = Check;
 			sourceTree = "<group>";
 		};
 		D9E466931D890BE90031F13F /* Support */ = {
@@ -397,19 +432,28 @@
 				D98F353A1D87B82A00A52DE6 /* Icon-App-76x76@3x.png in Resources */,
 				D935CE421D879A5300C79EF3 /* LaunchScreen.storyboard in Resources */,
 				D98F35371D87B82A00A52DE6 /* Icon-App-60x60@3x.png in Resources */,
+				D9DF1C531D8A05ED00C545B1 /* cancel.png in Resources */,
 				D98F35321D87B82A00A52DE6 /* Icon-App-40x40@1x.png in Resources */,
 				D98F35401D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png in Resources */,
+				D9DF1C511D8A04AF00C545B1 /* cancel-6.png in Resources */,
 				D935CE3F1D879A5300C79EF3 /* Assets.xcassets in Resources */,
+				D9DF1C571D8A05FB00C545B1 /* cancel-3.png in Resources */,
+				D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */,
 				D935CE3D1D879A5300C79EF3 /* Main.storyboard in Resources */,
+				D9DF1C4F1D8A04A700C545B1 /* cancel-5.png in Resources */,
 				D98F35381D87B82A00A52DE6 /* Icon-App-76x76@1x.png in Resources */,
+				D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */,
 				D98F35361D87B82A00A52DE6 /* Icon-App-60x60@2x.png in Resources */,
 				D98F352F1D87B82A00A52DE6 /* Icon-App-29x29@1x.png in Resources */,
 				D98F353E1D87B89A00A52DE6 /* pokedex.png in Resources */,
 				D98F35391D87B82A00A52DE6 /* Icon-App-76x76@2x.png in Resources */,
+				D9DF1C431D8A037E00C545B1 /* Checkmark@2x.png in Resources */,
 				D98F35341D87B82A00A52DE6 /* Icon-App-40x40@3x.png in Resources */,
 				D9E4669C1D893E9C0031F13F /* cualpokemon.jpg in Resources */,
 				D98F35331D87B82A00A52DE6 /* Icon-App-40x40@2x.png in Resources */,
+				D9DF1C551D8A05F100C545B1 /* cancel-2.png in Resources */,
 				D98F353B1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png in Resources */,
+				D9DF1C4D1D8A04A200C545B1 /* cancel-4.png in Resources */,
 				D98F35311D87B82A00A52DE6 /* Icon-App-29x29@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

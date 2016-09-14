@@ -10,8 +10,9 @@
 #import "DetailViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "MBProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface MasterViewController ()
+@interface MasterViewController ()<MBProgressHUDDelegate>
 
 @property NSMutableArray *objects;
 @end
@@ -26,15 +27,13 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-
+    
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
+    // Set the label text.
+    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
-    // Set some text to show the initial status.
-    hud.label.text = NSLocalizedString(@"Preparing...", @"HUD preparing title");
-    // Will look best, if we set a minimum size.
-    hud.minSize = CGSizeMake(150.f, 100.f);
-    
-    [self doSomeNetworkWorkWithProgress];
     
     PDV_WebService *webservice = [PDV_WebService webservice];
     
@@ -42,8 +41,33 @@
         NSLog(@"Ok Get");
         self.PokemonInWebService = allPokemon;
         [self.tableView reloadData];
+        
+        hud.mode = MBProgressHUDModeCustomView;
+        // Set an image view with a checkmark.
+        UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        hud.customView = [[UIImageView alloc] initWithImage:image];
+        // Looks a bit nicer if we make it square.
+        hud.square = YES;
+        // Optional label text.
+        hud.labelText = NSLocalizedString(@"Complete", @"CompleteWB");
+        // Configure the button.
+     
+
+        
+        [hud hide:YES afterDelay:2];
+        
+        
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get");
+        hud.mode = MBProgressHUDModeCustomView;
+        // Set an image view with a checkmark.
+        UIImage *image = [[UIImage imageNamed:@"Errormark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        hud.customView = [[UIImageView alloc] initWithImage:image];
+        // Looks a bit nicer if we make it square.
+        hud.square = YES;
+        // Optional label text.
+        hud.labelText = @" ";
+        hud.detailsLabelText = NSLocalizedString(@"Error WebService", @"ErroWB");
     }] ;
     
 }

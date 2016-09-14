@@ -43,30 +43,29 @@
 -(void)getAllPokemonOnSucess:(ELSuccessBlockWithAllPokemon)sucessBlock
                    onFailure:(FailureBlock)failureBlock{
     
+    
     NSURL *URL = [NSURL URLWithString:@"https://dl.dropboxusercontent.com/s/xuegpnywzq9hlvu/pokedex.json"];
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-  //  manager.responseSerializer = [AFHTTPResponseSerializer serializer]; // a
-    
-    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    //    NSError *localError = nil; //a
-     //   NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&localError]; //a
 
-       /* PDV_AllPokemon *pokemonsJSON = [[PDV_AllPokemon alloc] initWithDictionaryRepresentation:responseObject];
-        NSLog(@"AllPokemonsJSON \n %@",pokemonsJSON.allPokemonWB);
-         sucessBlock( pokemonsJSON);*/
+    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
+        NSLog(@"Progress \n %@",downloadProgress);
+    }success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    
         NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
         for (NSDictionary *modelOnePokemon in responseObject[kPokemonAll]) {
             PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:modelOnePokemon];
             [TempAllPokemon addObject:OnePokemon];
-          //  NSLog(@"allPokemonWB 0 : %@",TempAllPokemon);
+
         }
         sucessBlock( TempAllPokemon);
         
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        failureBlock(error);
     }];
 
 
