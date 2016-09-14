@@ -19,7 +19,6 @@ typedef void(^FailureBlock)(NSError *error);
 
 +(instancetype)webservice;
 
-//-(AFHTTPSessionManager *)httpClientManager;
 
 -(void)getAllPokemonOnSucess:(ELSuccessBlockWithAllPokemon)sucessBlock
                      onFailure:(FailureBlock)failureBlock;

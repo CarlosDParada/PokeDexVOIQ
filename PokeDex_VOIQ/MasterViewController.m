@@ -28,47 +28,7 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
-    // Set the label text.
-    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
-    
-    
-    PDV_WebService *webservice = [PDV_WebService webservice];
-    
-    [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
-        NSLog(@"Ok Get");
-        self.PokemonInWebService = allPokemon;
-        [self.tableView reloadData];
-        
-        hud.mode = MBProgressHUDModeCustomView;
-        // Set an image view with a checkmark.
-        UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        hud.customView = [[UIImageView alloc] initWithImage:image];
-        // Looks a bit nicer if we make it square.
-        hud.square = YES;
-        // Optional label text.
-        hud.labelText = NSLocalizedString(@"Complete", @"CompleteWB");
-        // Configure the button.
-     
-
-        
-        [hud hide:YES afterDelay:2];
-        
-        
-    } onFailure:^(NSError *error) {
-        NSLog(@"Error Get");
-        hud.mode = MBProgressHUDModeCustomView;
-        // Set an image view with a checkmark.
-        UIImage *image = [[UIImage imageNamed:@"Errormark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        hud.customView = [[UIImageView alloc] initWithImage:image];
-        // Looks a bit nicer if we make it square.
-        hud.square = YES;
-        // Optional label text.
-        hud.labelText = @" ";
-        hud.detailsLabelText = NSLocalizedString(@"Error WebService", @"ErroWB");
-    }] ;
+    [self LoadPokemonWebService]; // Load Pokemon
     
 }
 
@@ -90,14 +50,51 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    /*
+    
+}
+#pragma mark - Load Pokemon
+-(void)LoadPokemonWebService{
+
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
+    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
+    
+    
     PDV_WebService *webservice = [PDV_WebService webservice];
     
-    [webservice getAllPokemonOnSucess:^(PDV_AllPokemon *allPokemon) {
+    [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
         NSLog(@"Ok Get");
+        self.PokemonInWebService = allPokemon;
+        [self.tableView reloadData];
+        
+        [hud hide:YES];
+        [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"2"];
+        
+      
     } onFailure:^(NSError *error) {
-        NSLog(@"Error Get");
-    }] ;*/
+        NSLog(@"Error Get %@" ,error.description);
+        
+        [hud hide:YES];
+        [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
+    }] ;
+
+    
+}
+
+#pragma mark - Alert HUD
+
+- (void)AlertHUD:(NSString *)message nameImage:(NSString *)nameImage delay:(NSString *)delay {
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
+    hud.mode = MBProgressHUDModeCustomView;
+    UIImage *image = [[UIImage imageNamed:nameImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    hud.customView = [[UIImageView alloc] initWithImage:image];
+    hud.square = YES;
+    hud.labelText = @" ";
+    hud.detailsLabelText = message;
+    [hud hide:YES afterDelay:[delay doubleValue]];
     
 }
 
@@ -142,10 +139,8 @@
     __weak UIImageView *weakImageView = cell.imageView;
     
     [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        // Here you can animate the alpha of the imageview from 0.0 to 1.0 in 0.3 seconds
-        UIImageView *strongImageView = weakImageView; // make local strong reference to protect against race conditions
+        UIImageView *strongImageView = weakImageView;
         if (!strongImageView) return;
-        
         [UIView transitionWithView:strongImageView
                           duration:0.3
                            options:UIViewAnimationOptionTransitionCrossDissolve
@@ -154,8 +149,8 @@
                         }
                         completion:NULL];
         
-    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-        NSLog(@"Failed Load Image");
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"Failed Load Image \n request - %@ \n response - %@ \n error - %@",request,response,error.description]);
     }];
     
    

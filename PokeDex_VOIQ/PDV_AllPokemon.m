@@ -25,10 +25,6 @@
                  NSLog(@"allPokemonWB 0 : %@",TempAllPokemon);
             }
         }
-//        NSLog(@"allPokemonWB 1\n : %@",TempAllPokemon);
-//        self.allPokemonWB = TempAllPokemon;
-//        
-//        return self;
     }
      self.allPokemonWB = TempAllPokemon;
     return self;

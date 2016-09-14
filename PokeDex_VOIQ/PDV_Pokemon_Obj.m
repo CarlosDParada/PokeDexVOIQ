@@ -43,7 +43,7 @@
             }
         }
         
-        self.next_evolution = model[kPokemonNext_Evolution];//Array
+//        self.next_evolution = model[kPokemonNext_Evolution];//Array
         if (model[kPokemonNext_Evolution]) {
             for (NSDictionary *modelNextPokemon in model[kPokemonNext_Evolution]) {
                 PDV_NextPokemon *pokemonNext = [[PDV_NextPokemon alloc] initWithDictionaryRepresentation:modelNextPokemon];

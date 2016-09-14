@@ -10,11 +10,14 @@
 #ifndef PDV_Constans_h
 #define PDV_Constans_h
 
-#pragma mark AllPokemon
+#pragma mark - Webservice
+#define kURLWebService @"https://dl.dropboxusercontent.com/s/xuegpnywzq9hlvu/pokedex.json"
+
+#pragma mark - AllPokemon
 
 #define kPokemonAll @"pokemon"
 
-#pragma mark Pokemon
+#pragma mark - Pokemon
 
 #define kPokemonID @"id"
 #define kPokemonNum @"num"
@@ -31,7 +34,7 @@
 #define kPokemonPrev_Evolution @"prev_evolution"
 #define kPokemonNext_Evolution @"next_evolution"
 
-#pragma mark Next Pokemon
+#pragma mark - Next Pokemon
 
 #define kPokemonNextNum @"num"
 #define kPokemonNextName @"name"

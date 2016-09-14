@@ -30,13 +30,10 @@
 
 {
     
-    NSMutableURLRequest *request =  [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://dl.dropboxusercontent.com/s/xuegpnywzq9hlvu/pokedex.json"]];
+    NSMutableURLRequest *request =  [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kURLWebService]];
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
     if (conn) NSLog(@"ok");
-    
-    
     
 }
 
@@ -44,11 +41,11 @@
                    onFailure:(FailureBlock)failureBlock{
     
     
-    NSURL *URL = [NSURL URLWithString:@"https://dl.dropboxusercontent.com/s/xuegpnywzq9hlvu/pokedex.json"];
+    NSURL *URL = [NSURL URLWithString:kURLWebService];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-
+    
     [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
         NSLog(@"Progress \n %@",downloadProgress);
     }success:^(NSURLSessionTask *task, id responseObject) {
