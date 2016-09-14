@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDV_WebService.h"
+#import "PDV_AllPokemon.h"
+#import "PDV_Pokemon_Obj.h"
 
 @class DetailViewController;
+
 
 @interface MasterViewController : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-
+@property (strong, nonatomic) NSMutableArray *PokemonInWebService;
 
 @end
 

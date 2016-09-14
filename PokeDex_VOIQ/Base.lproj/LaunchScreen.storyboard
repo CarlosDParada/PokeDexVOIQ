@@ -39,7 +39,7 @@
                                     <constraint firstAttribute="height" constant="26" id="wbT-xp-1xS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voiq-logo-FINAL-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4K-mw-6hL">
