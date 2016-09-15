@@ -37,50 +37,9 @@
     
 }
 
+
+
 -(void)getAllPokemonOnSucess:(ELSuccessBlockWithAllPokemon)sucessBlock
-                   onFailure:(FailureBlock)failureBlock{
-    
-    
-    NSURL *URL = [NSURL URLWithString:kURLWebService];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-   // manager.responseSerializer = [AFHTTPResponseSerializer serializer]; // a
-  // manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-    
-  //   AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-//  manager.responseSerializer = responseSerializer;
-    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-    
-    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
-        NSLog(@"Progress \n %@",downloadProgress);
-    }success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-          //  NSError *localError = nil; //a
-          // NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&localError]; //a
-        //NSError *e = nil;
-        //NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData: responseObject options: NSJSONReadingMutableContainers error: &e];
-        //NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-       // NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-        //id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        
-        NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
-        for (NSDictionary *modelOnePokemon in responseObject[kPokemonAll]) {
-            PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:modelOnePokemon];
-            [TempAllPokemon addObject:OnePokemon];
-
-        }
-        sucessBlock( TempAllPokemon);
-        
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error.userInfo);
-        failureBlock(error);
-    }];
-}
-
-
--(void)getAllPokemonOnSucess2:(ELSuccessBlockWithAllPokemon)sucessBlock
                    onFailure:(FailureBlock)failureBlock{
     
     
