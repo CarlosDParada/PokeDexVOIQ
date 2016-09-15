@@ -23,15 +23,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    // Button Grid
+    UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
+    addButtonR.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = addButtonR;
+    
+    // Button Left
+    UIBarButtonItem *addButtonL = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
+    addButtonR.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = addButtonL;
+    
+    //
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     [self LoadPokemonWebService]; // Load Pokemon
     //Refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.backgroundColor = [ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
                             action:@selector(LoadPokemon)
@@ -55,13 +63,22 @@
     [self.objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    
+
+}
+
+-(void)changeToGridView{
+    UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Ups" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    alertControllerWS.message = [NSString stringWithFormat:@"\n Este codigo no esta implementado \n\n Proximamente..."];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }];
+    [alertControllerWS addAction:okAction];
+    [self presentViewController:alertControllerWS animated:YES completion:nil];
+
 }
 #pragma mark - Load Pokemon
 -(void)LoadPokemonWebService{
-
-
+    
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
@@ -77,20 +94,20 @@
         [hud hide:YES];
         [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"2"];
         
-      
+        
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get %@" ,error.description);
         
         [hud hide:YES];
         [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
         UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
-         alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
+        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         }];
         [alertControllerWS addAction:okAction];
         [self presentViewController:alertControllerWS animated:YES completion:nil];
     }] ;
-
+    
     
     
 }
@@ -160,12 +177,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PDV_Pokemon_Obj *Poke = self.PokemonInWebService[indexPath.row];
-
+    
     
     cell.textLabel.text = Poke.name_pokemon;
     NSString *Type =[NSString stringWithFormat:@"%@",Poke.Array_type];
     cell.detailTextLabel.text =Type;
-//    cell.imageView.image =  [self loadImage:Poke.img_url];
+    //    cell.imageView.image =  [self loadImage:Poke.img_url];
     
     NSString *cadenaURL = Poke.img_url;
     __weak UIImageView *weakImageView = cell.imageView;
@@ -185,7 +202,7 @@
         NSLog(@"%@", [NSString stringWithFormat:@"Failed Load Image \n request - %@ \n response - %@ \n error - %@",request,response,error.description]);
     }];
     
-   
+    
     
     return cell;
 }
@@ -217,13 +234,13 @@
 }
 #pragma mark
 -(void) chargeJson{
-
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"pokedex" ofType:@"json"];
     NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
     NSError *error =  nil;
     NSArray *jsonDataArray = [NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
     
     NSLog(@"%@",jsonDataArray);
-
+    
 }
 @end
