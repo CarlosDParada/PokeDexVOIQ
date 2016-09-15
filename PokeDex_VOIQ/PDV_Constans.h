@@ -11,8 +11,8 @@
 #define PDV_Constans_h
 
 #pragma mark - Webservice
-#define kURLWebService @"https://dl.dropboxusercontent.com/s/xuegpnywzq9hlvu/pokedex.json"
-
+//#define kURLWebService @"https://dl.dropboxusercontent.com//s/xuegpnywzq9hlvu/pokedex2.json?dl=0"
+#define kURLWebService @"https://dl.dropboxusercontent.com/s/gz0gk3r63isq442/pokedex.json?dl=0"
 #pragma mark - AllPokemon
 
 #define kPokemonAll @"pokemon"
