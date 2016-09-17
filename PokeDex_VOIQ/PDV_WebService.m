@@ -71,10 +71,9 @@
 }
 -(void)getParcialPokemon:(NSString * )URL_PokeAPi sucessBlock:(ELSuccessBlockWithParcialPokemon)sucessBlock
                onFailure:(FailureBlock)failureBlock{
-    NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,URL_PokeAPi];
-    NSURL *URL = [NSURL URLWithString:URLCall];
+   // NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,URL_PokeAPi];
+    NSURL *URL = [NSURL URLWithString:URL_PokeAPi];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-   // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/json"];
     
     [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
         NSLog(@"Progress \n %@",downloadProgress);
@@ -91,7 +90,7 @@
         
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        NSLog(@"Error: %@", error.userInfo);
         failureBlock(error);
     }];
 

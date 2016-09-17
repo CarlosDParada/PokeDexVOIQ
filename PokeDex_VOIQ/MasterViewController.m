@@ -36,7 +36,7 @@
     //
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    [self LoadPokemonWebService]; // Load Pokemon
+    [self LoadParcialPokemonWebService]; // Load Pokemon
     //Refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [ UIColor lightGrayColor];
@@ -63,7 +63,7 @@
     [self.objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
+    
 }
 
 
@@ -97,10 +97,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    PDV_Pokemon_Obj *Poke = self.PokemonInWebService[indexPath.row];
-  //  PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    cell.textLabel.text = [Poke.name_objPokeAPI capitalizedString] ;
     
-    cell.textLabel.text = Poke.name_pokemon;
+    NSString *string = [Poke.name_objPokeAPI capitalizedString];
+    if ([string containsString:@"-F"]) {
+        NSLog(@"Female");
+        string = [string substringToIndex:[string length] - 2];
+        NSMutableString *mu = [NSMutableString stringWithString:string];
+        
+        for (int p = 0; p < [mu length]+1; p++) {
+            if (p == [mu length]) {
+                [mu insertString:@" ♂♀" atIndex:p];
+            }
+        }
+        NSLog(@"%@",string);
+        NSLog(@"%@",mu);
+        
+    } else {
+       // NSLog(@"No gender");
+    }
+    
     NSString *cadenaURL = [NSString stringWithFormat:@"%@%d.png",kURLMedia_PokeApi,(int)indexPath.row+1];
     __weak UIImageView *weakImageView = cell.imageView;
     
@@ -146,8 +163,8 @@
         // Is Last row?
         if ([self.PokemonInWebService count] == (indexPath.row+1)) {
             //Yes
-            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-            [self LoadMoreParcialPokemon];
+            //  cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+            [self LoadMoreParcialPokemonInTableView];
         }
         else{
             // other rows
@@ -169,7 +186,7 @@
     PDV_WebService *webservice = [PDV_WebService webservice];
     
     [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
-        NSLog(@"Ok Get");
+        // NSLog(@"Ok Get");
         NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
         self.PokemonInWebService =TempArray;
         [self.tableView reloadData];
@@ -203,90 +220,86 @@
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor lightGrayColor];
+    hud.color =[ UIColor redColor];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
     
     PDV_WebService *webservice = [PDV_WebService webservice];
+    NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,kURLPokemonIDPokeApi];
     
-    [webservice getParcialPokemon:kURLPokemonIDPokeApi sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
+    [webservice getParcialPokemon:URLCall sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
         NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
         self.PokemonInWebService =ParcialPokemon;
+        self.nextURL = URLNext;
         [self.tableView reloadData];
         
         [hud hide:YES];
-      //  [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"1"];
+        //  [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"1"];
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get %@" ,error.description);
         [hud hide:YES];
-      //  [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
+        //  [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
         UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
         alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         }];
         [alertControllerWS addAction:okAction];
         [self presentViewController:alertControllerWS animated:YES completion:nil];
-
+        
     }];
     
 }
 #pragma mark - More Pokemon
--(void) LoadMoreParcialPokemon{
-    
-    [self.tableView beginUpdates];
-    // NSArray *arr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.PokemonInWebService.count-1 inSection:0]];
-    // [self.tableView insertRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationAutomatic]
-    
+-(void) LoadMoreParcialPokemonInTableView{
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor lightGrayColor];
-    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
+    hud.color =[ UIColor redColor];
     
     
-    PDV_WebService *webservice = [PDV_WebService webservice];
-    
-    [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
-        NSLog(@"Ok Get");
-        
-        // [self.tableView reloadData];
-        
-        NSInteger countOfRowsToInsert = [ allPokemon count];
-        NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
-        for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
-            [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-        }
-        [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
-        NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
-        self.PokemonInWebService =TempArray;
-        [self.tableView reloadData];
-        [self.tableView endUpdates];
-        
-        //NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
-        // self.PokemonInWebService =TempArray;
-        
-        [hud hide:YES];
-        //[self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"2"];
-        
-        
-    } onFailure:^(NSError *error) {
-        NSLog(@"Error Get %@" ,error.description);
-        
-        [hud hide:YES];
-        // [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
-        UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+        PDV_WebService *webservice = [PDV_WebService webservice];
+        [webservice getParcialPokemon:self.nextURL sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
+            
+            // build the index paths for insertion
+            // since you're adding to the end of datasource, the new rows will start at count
+            NSMutableArray *indexPaths = [NSMutableArray array];
+            NSInteger currentCount = self.PokemonInWebService.count;
+            for (int i = 0; i < ParcialPokemon.count; i++) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:0]];
+            }
+            
+            // do the insertion
+            NSMutableArray *TempArray = [[self.PokemonInWebService arrayByAddingObjectsFromArray:ParcialPokemon] mutableCopy];
+            self.PokemonInWebService =TempArray;
+            self.nextURL = URLNext;
+            
+            // tell the table view to update (at all of the inserted index paths)
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
             [self.tableView endUpdates];
-        }];
-        [alertControllerWS addAction:okAction];
-        [self presentViewController:alertControllerWS animated:YES completion:nil];
-    }] ;
-    
-    
+            [hud hide:YES];
+            
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error Get %@" ,error.description);
+            
+            UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+                [hud hide:YES];
+            }];
+            [alertControllerWS addAction:okAction];
+            [self presentViewController:alertControllerWS animated:YES completion:nil];
+        }] ;
+        
+    });
 }
+
+
 - (void)LoadPokemon{
-    // Reload table data
-    [self LoadPokemonWebService];
+    
+    [self LoadParcialPokemonWebService];
     
     // End the refreshing
     if (self.refreshControl) {

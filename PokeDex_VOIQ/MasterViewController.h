@@ -18,5 +18,7 @@
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) NSMutableArray *PokemonInWebService;
 
+@property (strong , nonatomic )NSString *nextURL;
+
 @end
 
