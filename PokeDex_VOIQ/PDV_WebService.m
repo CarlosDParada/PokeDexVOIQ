@@ -71,10 +71,10 @@
 }
 -(void)getParcialPokemon:(NSString * )URL_PokeAPi sucessBlock:(ELSuccessBlockWithParcialPokemon)sucessBlock
                onFailure:(FailureBlock)failureBlock{
-    
-    NSURL *URL = [NSURL URLWithString:URL_PokeAPi];
+    NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,URL_PokeAPi];
+    NSURL *URL = [NSURL URLWithString:URLCall];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+   // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/json"];
     
     [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
         NSLog(@"Progress \n %@",downloadProgress);
@@ -82,12 +82,12 @@
         NSLog(@"JSON: %@", responseObject);
         
         NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
-        for (NSDictionary *modelOnePokemon in responseObject[kPokemonAll]) {
-            PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:modelOnePokemon];
+        for (NSDictionary *modelOnePokemon in responseObject[kPokeApiResults]) {
+            PDV_Obj_PokeApi *OnePokemon = [[PDV_Obj_PokeApi alloc] initWithDictionaryRepresentation:modelOnePokemon];
             [TempAllPokemon addObject:OnePokemon];
             
         }
-        sucessBlock( TempAllPokemon);
+        sucessBlock( TempAllPokemon , responseObject[kPokeApiNext]);
         
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {

@@ -39,7 +39,7 @@
     [self LoadPokemonWebService]; // Load Pokemon
     //Refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
+    self.refreshControl.backgroundColor = [ UIColor lightGrayColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
                             action:@selector(LoadPokemon)
@@ -66,21 +66,103 @@
 
 }
 
--(void)changeToGridView{
-    UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Ups" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    alertControllerWS.message = [NSString stringWithFormat:@"\n Este codigo no esta implementado \n\n Proximamente..."];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-    }];
-    [alertControllerWS addAction:okAction];
-    [self presentViewController:alertControllerWS animated:YES completion:nil];
 
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        [self chargeJson];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDate *object = self.objects[indexPath.row];
+        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        [controller setDetailItem:object];
+        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        controller.navigationItem.leftItemsSupplementBackButton = YES;
+    }
 }
+
+#pragma mark - Table View Delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+    
+}
+
+- (NSInteger)tableView:
+(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //return self.objects.count;
+    return [self.PokemonInWebService count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    PDV_Pokemon_Obj *Poke = self.PokemonInWebService[indexPath.row];
+  //  PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    
+    cell.textLabel.text = Poke.name_pokemon;
+    NSString *cadenaURL = [NSString stringWithFormat:@"%@%d.png",kURLMedia_PokeApi,(int)indexPath.row+1];
+    __weak UIImageView *weakImageView = cell.imageView;
+    
+    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        UIImageView *strongImageView = weakImageView;
+        if (!strongImageView) return;
+        [UIView transitionWithView:strongImageView
+                          duration:0.3
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            strongImageView.image = image;
+                        }
+                        completion:NULL];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"Failed Load Image \n request - %@ \n response - %@ \n error - %@",request,response,error.description]);
+    }];
+    
+    
+    
+    return cell;
+}
+
+#pragma mark - TableView - Data Source
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.PokemonInWebService removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //Section 0
+    if (indexPath.section == 0) {
+        // Is Last row?
+        if ([self.PokemonInWebService count] == (indexPath.row+1)) {
+            //Yes
+            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+            [self LoadMoreParcialPokemon];
+        }
+        else{
+            // other rows
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+}
+
 #pragma mark - Load Pokemon
 -(void)LoadPokemonWebService{
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
+    //hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:0.8];
+    hud.color =[ UIColor lightGrayColor];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
     
@@ -108,11 +190,100 @@
         [alertControllerWS addAction:okAction];
         [self presentViewController:alertControllerWS animated:YES completion:nil];
     }] ;
-    
+    [webservice getParcialPokemon:kURLPokemonIDPokeApi sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
+        NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
+        
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error Get %@" ,error.description);
+    }];
     
     
 }
+-(void)LoadParcialPokemonWebService{
+    
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.color =[ UIColor lightGrayColor];
+    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
+    
+    
+    PDV_WebService *webservice = [PDV_WebService webservice];
+    
+    [webservice getParcialPokemon:kURLPokemonIDPokeApi sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
+        NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
+        self.PokemonInWebService =ParcialPokemon;
+        [self.tableView reloadData];
+        
+        [hud hide:YES];
+      //  [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"1"];
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error Get %@" ,error.description);
+        [hud hide:YES];
+      //  [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
+        UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        }];
+        [alertControllerWS addAction:okAction];
+        [self presentViewController:alertControllerWS animated:YES completion:nil];
 
+    }];
+    
+}
+#pragma mark - More Pokemon
+-(void) LoadMoreParcialPokemon{
+    
+    [self.tableView beginUpdates];
+    // NSArray *arr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.PokemonInWebService.count-1 inSection:0]];
+    // [self.tableView insertRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationAutomatic]
+    
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.color =[ UIColor lightGrayColor];
+    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
+    
+    
+    PDV_WebService *webservice = [PDV_WebService webservice];
+    
+    [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
+        NSLog(@"Ok Get");
+        
+        // [self.tableView reloadData];
+        
+        NSInteger countOfRowsToInsert = [ allPokemon count];
+        NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
+            [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
+        NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
+        self.PokemonInWebService =TempArray;
+        [self.tableView reloadData];
+        [self.tableView endUpdates];
+        
+        //NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
+        // self.PokemonInWebService =TempArray;
+        
+        [hud hide:YES];
+        //[self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"2"];
+        
+        
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error Get %@" ,error.description);
+        
+        [hud hide:YES];
+        // [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
+        UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [self.tableView endUpdates];
+        }];
+        [alertControllerWS addAction:okAction];
+        [self presentViewController:alertControllerWS animated:YES completion:nil];
+    }] ;
+    
+    
+}
 - (void)LoadPokemon{
     // Reload table data
     [self LoadPokemonWebService];
@@ -137,7 +308,8 @@
 - (void)AlertHUD:(NSString *)message nameImage:(NSString *)nameImage delay:(NSString *)delay {
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
+    //hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:0.9];
+    hud.color =[ UIColor lightGrayColor];
     hud.mode = MBProgressHUDModeCustomView;
     UIImage *image = [[UIImage imageNamed:nameImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     hud.customView = [[UIImageView alloc] initWithImage:image];
@@ -148,158 +320,16 @@
     
 }
 
-#pragma mark - Segues
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        [self chargeJson];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
-    }
-}
-
-#pragma mark - Table View
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-    
-}
-
-- (NSInteger)tableView:
-(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return self.objects.count;
-    return [self.PokemonInWebService count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    PDV_Pokemon_Obj *Poke = self.PokemonInWebService[indexPath.row];
-    
-    
-    cell.textLabel.text = Poke.name_pokemon;
-    NSString *Type =[NSString stringWithFormat:@"%@",Poke.Array_type];
-    cell.detailTextLabel.text =Type;
-    //    cell.imageView.image =  [self loadImage:Poke.img_url];
-    
-    NSString *cadenaURL = Poke.img_url;
-    __weak UIImageView *weakImageView = cell.imageView;
-    
-    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        UIImageView *strongImageView = weakImageView;
-        if (!strongImageView) return;
-        [UIView transitionWithView:strongImageView
-                          duration:0.3
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:^{
-                            strongImageView.image = image;
-                        }
-                        completion:NULL];
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", [NSString stringWithFormat:@"Failed Load Image \n request - %@ \n response - %@ \n error - %@",request,response,error.description]);
+-(void)changeToGridView{
+    UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Ups" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    alertControllerWS.message = [NSString stringWithFormat:@"\n Este codigo no esta implementado \n\n Proximamente..."];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     }];
+    [alertControllerWS addAction:okAction];
+    [self presentViewController:alertControllerWS animated:YES completion:nil];
     
-    
-    
-    return cell;
-}
-- (UIImage *)loadImage:(NSString *)url{
-    
-    UIImage *image = [[UIImage alloc]init];
-    NSString *cadenaURL = url;
-    NSURL *objURL = [[NSURL alloc]initWithString:cadenaURL ];
-    NSData *dataImage = [NSData dataWithContentsOfURL:objURL];
-    image = [UIImage imageWithData: dataImage];
-    
-    return (image);
-}
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.PokemonInWebService removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    //Section 0
-    if (indexPath.section == 0) {
-        // Is Last row?
-        if ([self.PokemonInWebService count] == (indexPath.row+1)) {
-            //Yes
-            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-            [self chargeMorePokemon];
-        }
-        else{
-            // other rows
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-    }
-}
--(void) chargeMorePokemon{
-
-    [self.tableView beginUpdates];
-    // NSArray *arr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.PokemonInWebService.count-1 inSection:0]];
-   // [self.tableView insertRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationAutomatic]
-        
-        
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:1];
-        hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
-        
-        
-        PDV_WebService *webservice = [PDV_WebService webservice];
-        
-        [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
-            NSLog(@"Ok Get");
-            
-           // [self.tableView reloadData];
-            
-            NSInteger countOfRowsToInsert = [ allPokemon count];
-            NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
-            for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
-                [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            }
-            [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
-            NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
-            self.PokemonInWebService =TempArray;
-            [self.tableView reloadData];
-            [self.tableView endUpdates];
-            
-            //NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
-           // self.PokemonInWebService =TempArray;
-            
-            [hud hide:YES];
-            [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"2"];
-            
-            
-        } onFailure:^(NSError *error) {
-            NSLog(@"Error Get %@" ,error.description);
-            
-            [hud hide:YES];
-            [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
-            UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-                [self.tableView endUpdates];
-            }];
-            [alertControllerWS addAction:okAction];
-            [self presentViewController:alertControllerWS animated:YES completion:nil];
-        }] ;
-    
-    
-}
-#pragma mark
 -(void) chargeJson{
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"pokedex" ofType:@"json"];

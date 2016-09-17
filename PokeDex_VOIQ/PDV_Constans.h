@@ -17,13 +17,13 @@
 #pragma mark - PokeAPI
 #define KRULBasePokeAPI @"http://pokeapi.co/"
 
-#define KURLPokeAPiV2 @"api/v2/"
+#define KRULBasePokeAPIV2 @"api/v2/"
 // only 10 Pokemon
 #define kURLPokemonIDPokeApi @"api/v2/pokemon/"
 //http://pokeapi.co/api/v2/pokemon/?offset=0
 
 // Max 721 pokemon's
-#define kURLMediaPokemonPokeApi @"media/img/"
+#define kURLMedia_PokeApi @"http://pokeapi.co/media/img/"
 //http://pokeapi.co/media/img/718.png
 
 #define kURLGenderPokeAPi @"api/v2/gender/"
