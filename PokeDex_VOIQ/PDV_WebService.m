@@ -69,5 +69,33 @@
     
     
 }
+-(void)getParcialPokemon:(NSString * )URL_PokeAPi sucessBlock:(ELSuccessBlockWithParcialPokemon)sucessBlock
+               onFailure:(FailureBlock)failureBlock{
+    
+    NSURL *URL = [NSURL URLWithString:URL_PokeAPi];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    
+    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
+        NSLog(@"Progress \n %@",downloadProgress);
+    }success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
+        for (NSDictionary *modelOnePokemon in responseObject[kPokemonAll]) {
+            PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:modelOnePokemon];
+            [TempAllPokemon addObject:OnePokemon];
+            
+        }
+        sucessBlock( TempAllPokemon);
+        
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        failureBlock(error);
+    }];
+
+}
+
 
 @end

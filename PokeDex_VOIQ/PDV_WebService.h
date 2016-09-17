@@ -7,11 +7,12 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "PDV_AllPokemon.h"
+#import "PDV_Pokemon_Obj.h"
 #import "PDV_Constans.h"
 #import <AFNetworking.h>
 
 typedef void(^ELSuccessBlockWithAllPokemon)(NSMutableArray  *allPokemon);
+typedef void(^ELSuccessBlockWithParcialPokemon)(NSMutableArray  *ParcialPokemon);
 typedef void(^FailureBlock)(NSError *error);
 
 

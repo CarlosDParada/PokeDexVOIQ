@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PDV_WebService.h"
-#import "PDV_AllPokemon.h"
 #import "PDV_Pokemon_Obj.h"
 
 @class DetailViewController;

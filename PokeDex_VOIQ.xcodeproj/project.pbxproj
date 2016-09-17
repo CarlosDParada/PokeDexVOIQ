@@ -34,6 +34,8 @@
 		D98F353B1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F352E1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png */; };
 		D98F353E1D87B89A00A52DE6 /* pokedex.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353D1D87B89A00A52DE6 /* pokedex.png */; };
 		D98F35401D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */; };
+		D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */; };
+		D9D755441D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */; };
 		D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */; };
 		D9DF1C431D8A037E00C545B1 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */; };
 		D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */; };
@@ -51,7 +53,6 @@
 		D9DF1C631D8A50B100C545B1 /* list-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C621D8A50B100C545B1 /* list-3.png */; };
 		D9E466881D88B6AA0031F13F /* PDV_NextPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */; };
 		D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E4668B1D88BB810031F13F /* NSDictionary+StripNSNulls.m */; };
-		D9E4668F1D88D31C0031F13F /* PDV_AllPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E4668E1D88D31C0031F13F /* PDV_AllPokemon.m */; };
 		D9E466961D890C910031F13F /* PDV_WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E466951D890C910031F13F /* PDV_WebService.m */; };
 		D9E4669C1D893E9C0031F13F /* cualpokemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9E4669B1D893E9C0031F13F /* cualpokemon.jpg */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,10 @@
 		D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voiq-logo-FINAL-1.png"; sourceTree = "<group>"; };
 		D98F35411D87BA8700A52DE6 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		D98F35421D87BA9F00A52DE6 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		D9D7553E1D8D329000F5F8DB /* PDV_Obj_PokeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Obj_PokeApi.h; sourceTree = "<group>"; };
+		D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Obj_PokeApi.m; sourceTree = "<group>"; };
+		D9D755421D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_ParcialPokemon_PokeAPi.h; sourceTree = "<group>"; };
+		D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_ParcialPokemon_PokeAPi.m; sourceTree = "<group>"; };
 		D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkmark.png; sourceTree = "<group>"; };
 		D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@2x.png"; sourceTree = "<group>"; };
 		D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@3x.png"; sourceTree = "<group>"; };
@@ -135,8 +140,6 @@
 		D9E466891D88B8240031F13F /* PDV_Constans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDV_Constans.h; sourceTree = "<group>"; };
 		D9E4668A1D88BB810031F13F /* NSDictionary+StripNSNulls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StripNSNulls.h"; sourceTree = "<group>"; };
 		D9E4668B1D88BB810031F13F /* NSDictionary+StripNSNulls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StripNSNulls.m"; sourceTree = "<group>"; };
-		D9E4668D1D88D31C0031F13F /* PDV_AllPokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_AllPokemon.h; sourceTree = "<group>"; };
-		D9E4668E1D88D31C0031F13F /* PDV_AllPokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_AllPokemon.m; sourceTree = "<group>"; };
 		D9E466941D890C910031F13F /* PDV_WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_WebService.h; sourceTree = "<group>"; };
 		D9E466951D890C910031F13F /* PDV_WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_WebService.m; sourceTree = "<group>"; };
 		D9E4669B1D893E9C0031F13F /* cualpokemon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cualpokemon.jpg; sourceTree = "<group>"; };
@@ -192,8 +195,6 @@
 				D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */,
 				D9E466861D88B6AA0031F13F /* PDV_NextPokemon.h */,
 				D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */,
-				D9E4668D1D88D31C0031F13F /* PDV_AllPokemon.h */,
-				D9E4668E1D88D31C0031F13F /* PDV_AllPokemon.m */,
 			);
 			name = "Pokemon Obj";
 			sourceTree = "<group>";
@@ -223,6 +224,7 @@
 		D935CE2E1D879A5300C79EF3 /* PokeDex_VOIQ */ = {
 			isa = PBXGroup;
 			children = (
+				D9D755411D8D329900F5F8DB /* PokeApi.co */,
 				D92072AD1D889991004E3F82 /* Pokemon Obj */,
 				D9E466931D890BE90031F13F /* Support */,
 				D935CE351D879A5300C79EF3 /* MasterViewController.h */,
@@ -308,6 +310,17 @@
 				D98F352E1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png */,
 			);
 			name = Icone;
+			sourceTree = "<group>";
+		};
+		D9D755411D8D329900F5F8DB /* PokeApi.co */ = {
+			isa = PBXGroup;
+			children = (
+				D9D7553E1D8D329000F5F8DB /* PDV_Obj_PokeApi.h */,
+				D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */,
+				D9D755421D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.h */,
+				D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */,
+			);
+			name = PokeApi.co;
 			sourceTree = "<group>";
 		};
 		D9DF1C4B1D8A049800C545B1 /* Check */ = {
@@ -554,11 +567,12 @@
 				D9E466961D890C910031F13F /* PDV_WebService.m in Sources */,
 				D935CE341D879A5300C79EF3 /* AppDelegate.m in Sources */,
 				D9E466881D88B6AA0031F13F /* PDV_NextPokemon.m in Sources */,
+				D9D755441D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m in Sources */,
 				D935CE371D879A5300C79EF3 /* MasterViewController.m in Sources */,
 				D935CE311D879A5300C79EF3 /* main.m in Sources */,
 				D935CE3A1D879A5300C79EF3 /* DetailViewController.m in Sources */,
+				D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */,
 				D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */,
-				D9E4668F1D88D31C0031F13F /* PDV_AllPokemon.m in Sources */,
 				D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,8 +11,35 @@
 #define PDV_Constans_h
 
 #pragma mark - Webservice
-//#define kURLWebService @"https://dl.dropboxusercontent.com//s/xuegpnywzq9hlvu/pokedex2.json?dl=0"
+
 #define kURLWebService @"https://dl.dropboxusercontent.com/s/gz0gk3r63isq442/pokedex.json?dl=0"
+
+#pragma mark - PokeAPI
+#define KRULBasePokeAPI @"http://pokeapi.co/"
+
+#define KURLPokeAPiV2 @"api/v2/"
+// only 10 Pokemon
+#define kURLPokemonIDPokeApi @"api/v2/pokemon/"
+//http://pokeapi.co/api/v2/pokemon/?offset=0
+
+// Max 721 pokemon's
+#define kURLMediaPokemonPokeApi @"media/img/"
+//http://pokeapi.co/media/img/718.png
+
+#define kURLGenderPokeAPi @"api/v2/gender/"
+//http://pokeapi.co/api/v2/gender/2/tickets?fields=id,subject,
+
+
+#pragma mark - obj Response PokeApi
+#define kPokeApiURL @"url"
+#define kPokeApiName @ "name"
+
+#pragma mark - Parcial Response PokeApi
+#define kPokeApiCount @"count"
+#define kPokeApiPrevious @ "previous"
+#define kPokeApiResults @ "results"
+#define kPokeApiNext @ "next"
+
 #pragma mark - AllPokemon
 
 #define kPokemonAll @"pokemon"
