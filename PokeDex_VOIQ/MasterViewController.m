@@ -214,9 +214,6 @@
     NSData *dataImage = [NSData dataWithContentsOfURL:objURL];
     image = [UIImage imageWithData: dataImage];
     
-    
-    
-    
     return (image);
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
