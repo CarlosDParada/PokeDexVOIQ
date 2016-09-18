@@ -22,6 +22,11 @@
             
         // Update the view.
         [self configureView];
+        
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = self.viewTop.bounds;
+        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor redColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
+        [self.viewTop.layer insertSublayer:gradient atIndex:0];
     }
 }
 
@@ -42,5 +47,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
+ UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
+ CAGradientLayer *gradient = [CAGradientLayer layer];
+ gradient.frame = view.bounds;
+ gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+ [view.layer insertSublayer:gradient atIndex:0];
+ */
 @end

@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "MBProgressHUD.h"
+#import "PDV_CellMenuTableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MasterViewController ()<MBProgressHUDDelegate>
@@ -22,15 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     // Button Grid
     UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
     addButtonR.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = addButtonR;
     
     // Button Left
-    UIBarButtonItem *addButtonL = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
-    addButtonR.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *addButtonL = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pokedex"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = addButtonL;
     
     //
@@ -94,34 +95,33 @@
     //return self.objects.count;
     return [self.PokemonInWebService count];
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 50;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
-    cell.textLabel.text = [Poke.name_objPokeAPI capitalizedString] ;
+   // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    PDV_CellMenuTableViewCell *cellHome = [[PDV_CellMenuTableViewCell alloc] init];
+    [tableView registerNib:[UINib nibWithNibName:@"PDV_CellHome" bundle:nil] forCellReuseIdentifier:@"CellHome"];
+    cellHome =[tableView dequeueReusableCellWithIdentifier:@"CellHome"];
     
-    NSString *string = [Poke.name_objPokeAPI capitalizedString];
-    if ([string containsString:@"-F"]) {
-        NSLog(@"Female");
-        string = [string substringToIndex:[string length] - 2];
-        NSMutableString *mu = [NSMutableString stringWithString:string];
-        
-        for (int p = 0; p < [mu length]+1; p++) {
-            if (p == [mu length]) {
-                [mu insertString:@" ♂♀" atIndex:p];
-            }
-        }
-        NSLog(@"%@",string);
-        NSLog(@"%@",mu);
-        
-    } else {
-       // NSLog(@"No gender");
-    }
+
+    
+    PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    NSString *nameBasePokemon = [ self checkGenderPokemon:Poke.name_objPokeAPI];
+    
+    //cell.textLabel.text = [nameBasePokemon capitalizedString] ;
+     cellHome.namePokemon.text = [nameBasePokemon capitalizedString] ;
+    
+    cellHome.id_universalPokemon.text = [NSString stringWithFormat:@"%d",(int)indexPath.row + 1] ;
+   
     
     NSString *cadenaURL = [NSString stringWithFormat:@"%@%d.png",kURLMedia_PokeApi,(int)indexPath.row+1];
-    __weak UIImageView *weakImageView = cell.imageView;
+    //__weak UIImageView *weakImageView = cell.imageView;
+      __weak UIImageView *weakImageView = cellHome.imagemPokemon;
     
-    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    [cellHome.imagemPokemon setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         UIImageView *strongImageView = weakImageView;
         if (!strongImageView) return;
         [UIView transitionWithView:strongImageView
@@ -138,11 +138,43 @@
     
     
     
-    return cell;
+    return cellHome;
 }
+#pragma mark - CheckGener
+-(NSString *)checkGenderPokemon:(NSString * )NamePokemon{
 
+
+    if ([NamePokemon containsString:@"-f"]) {
+        //NSLog(@"Female");
+        NamePokemon = [NamePokemon substringToIndex:[NamePokemon length] - 2];
+        NSMutableString *mutableName = [NSMutableString stringWithString:NamePokemon];
+        
+        for (int p = 0; p < [NamePokemon length]+1; p++) {
+            if (p == [NamePokemon length]) {
+                [mutableName insertString:@" ♀" atIndex:p];
+            }
+        }
+        return mutableName;
+        
+    } else if ([NamePokemon containsString:@"-m"]) {
+        //NSLog(@"Male");
+        NamePokemon = [NamePokemon substringToIndex:[NamePokemon length] - 2];
+        NSMutableString *mutableName = [NSMutableString stringWithString:NamePokemon];
+        
+        for (int p = 0; p < [NamePokemon length]+1; p++) {
+            if (p == [NamePokemon length]) {
+                [mutableName insertString:@" ♂" atIndex:p];
+            }
+        }
+        return mutableName;
+        
+    }else {
+        // NSLog(@"No gender");
+        return NamePokemon;
+    }
+}
 #pragma mark - TableView - Data Source
-
+/*
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return NO;
@@ -155,6 +187,14 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+*/
+
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -208,7 +248,7 @@
         [self presentViewController:alertControllerWS animated:YES completion:nil];
     }] ;
     [webservice getParcialPokemon:kURLPokemonIDPokeApi sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
-        NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
+        //NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
         
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get %@" ,error.description);
@@ -228,7 +268,7 @@
     NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,kURLPokemonIDPokeApi];
     
     [webservice getParcialPokemon:URLCall sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
-        NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
+      //  NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
         self.PokemonInWebService =ParcialPokemon;
         self.nextURL = URLNext;
         [self.tableView reloadData];

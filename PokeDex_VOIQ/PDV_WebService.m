@@ -78,7 +78,7 @@
     [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
         NSLog(@"Progress \n %@",downloadProgress);
     }success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+       // NSLog(@"JSON: %@", responseObject);
         
         NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
         for (NSDictionary *modelOnePokemon in responseObject[kPokeApiResults]) {

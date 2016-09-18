@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIView *viewTop;
+@property (weak, nonatomic) IBOutlet UIView *viewBotton;
+@property (weak, nonatomic) IBOutlet UIImageView *imagePokemon;
 
 @end
 

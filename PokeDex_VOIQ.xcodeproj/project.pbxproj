@@ -36,6 +36,15 @@
 		D98F35401D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */; };
 		D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */; };
 		D9D755441D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */; };
+		D9D755461D8DF88000F5F8DB /* pokeball_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D755451D8DF88000F5F8DB /* pokeball_icon.png */; };
+		D9D755481D8DF8F200F5F8DB /* pokeball_icon@1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D755471D8DF8F200F5F8DB /* pokeball_icon@1.png */; };
+		D9D7554A1D8DF8F600F5F8DB /* pokeball_icon@2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D755491D8DF8F600F5F8DB /* pokeball_icon@2.png */; };
+		D9D7554C1D8DF8FB00F5F8DB /* pokeball_icon@3.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D7554B1D8DF8FB00F5F8DB /* pokeball_icon@3.png */; };
+		D9D755501D8DF9AC00F5F8DB /* pokeball_icon-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D7554D1D8DF9AC00F5F8DB /* pokeball_icon-3.png */; };
+		D9D755511D8DF9AC00F5F8DB /* pokeball_icon-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D7554E1D8DF9AC00F5F8DB /* pokeball_icon-2.png */; };
+		D9D755521D8DF9AC00F5F8DB /* pokeball_icon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D7554F1D8DF9AC00F5F8DB /* pokeball_icon-1.png */; };
+		D9D755561D8E570B00F5F8DB /* PDV_CellHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D755551D8E570B00F5F8DB /* PDV_CellHome.xib */; };
+		D9D7555A1D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D755591D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m */; };
 		D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */; };
 		D9DF1C431D8A037E00C545B1 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */; };
 		D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */; };
@@ -120,6 +129,16 @@
 		D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Obj_PokeApi.m; sourceTree = "<group>"; };
 		D9D755421D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_ParcialPokemon_PokeAPi.h; sourceTree = "<group>"; };
 		D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_ParcialPokemon_PokeAPi.m; sourceTree = "<group>"; };
+		D9D755451D8DF88000F5F8DB /* pokeball_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pokeball_icon.png; sourceTree = "<group>"; };
+		D9D755471D8DF8F200F5F8DB /* pokeball_icon@1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeball_icon@1.png"; sourceTree = "<group>"; };
+		D9D755491D8DF8F600F5F8DB /* pokeball_icon@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeball_icon@2.png"; sourceTree = "<group>"; };
+		D9D7554B1D8DF8FB00F5F8DB /* pokeball_icon@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeball_icon@3.png"; sourceTree = "<group>"; };
+		D9D7554D1D8DF9AC00F5F8DB /* pokeball_icon-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeball_icon-3.png"; sourceTree = "<group>"; };
+		D9D7554E1D8DF9AC00F5F8DB /* pokeball_icon-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeball_icon-2.png"; sourceTree = "<group>"; };
+		D9D7554F1D8DF9AC00F5F8DB /* pokeball_icon-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeball_icon-1.png"; sourceTree = "<group>"; };
+		D9D755551D8E570B00F5F8DB /* PDV_CellHome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDV_CellHome.xib; sourceTree = "<group>"; };
+		D9D755581D8E592100F5F8DB /* PDV_CellMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_CellMenuTableViewCell.h; sourceTree = "<group>"; };
+		D9D755591D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_CellMenuTableViewCell.m; sourceTree = "<group>"; };
 		D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkmark.png; sourceTree = "<group>"; };
 		D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@2x.png"; sourceTree = "<group>"; };
 		D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@3x.png"; sourceTree = "<group>"; };
@@ -227,6 +246,7 @@
 				D9D755411D8D329900F5F8DB /* PokeApi.co */,
 				D92072AD1D889991004E3F82 /* Pokemon Obj */,
 				D9E466931D890BE90031F13F /* Support */,
+				D9D755571D8E58F200F5F8DB /* Cell */,
 				D935CE351D879A5300C79EF3 /* MasterViewController.h */,
 				D935CE361D879A5300C79EF3 /* MasterViewController.m */,
 				D935CE381D879A5300C79EF3 /* DetailViewController.h */,
@@ -275,6 +295,13 @@
 		D98F35211D87B7FA00A52DE6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7554D1D8DF9AC00F5F8DB /* pokeball_icon-3.png */,
+				D9D7554E1D8DF9AC00F5F8DB /* pokeball_icon-2.png */,
+				D9D7554F1D8DF9AC00F5F8DB /* pokeball_icon-1.png */,
+				D9D755471D8DF8F200F5F8DB /* pokeball_icon@1.png */,
+				D9D755491D8DF8F600F5F8DB /* pokeball_icon@2.png */,
+				D9D7554B1D8DF8FB00F5F8DB /* pokeball_icon@3.png */,
+				D9D755451D8DF88000F5F8DB /* pokeball_icon.png */,
 				D9DF1C5E1D8A50A700C545B1 /* list.png */,
 				D9DF1C601D8A50AC00C545B1 /* list-2.png */,
 				D9DF1C621D8A50B100C545B1 /* list-3.png */,
@@ -321,6 +348,16 @@
 				D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */,
 			);
 			name = PokeApi.co;
+			sourceTree = "<group>";
+		};
+		D9D755571D8E58F200F5F8DB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D9D755551D8E570B00F5F8DB /* PDV_CellHome.xib */,
+				D9D755581D8E592100F5F8DB /* PDV_CellMenuTableViewCell.h */,
+				D9D755591D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		D9DF1C4B1D8A049800C545B1 /* Check */ = {
@@ -473,24 +510,32 @@
 				D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */,
 				D935CE3D1D879A5300C79EF3 /* Main.storyboard in Resources */,
 				D9DF1C4F1D8A04A700C545B1 /* cancel-5.png in Resources */,
+				D9D755521D8DF9AC00F5F8DB /* pokeball_icon-1.png in Resources */,
+				D9D755481D8DF8F200F5F8DB /* pokeball_icon@1.png in Resources */,
 				D9DF1C591D8A500C00C545B1 /* cells.png in Resources */,
 				D98F35381D87B82A00A52DE6 /* Icon-App-76x76@1x.png in Resources */,
+				D9D755461D8DF88000F5F8DB /* pokeball_icon.png in Resources */,
 				D9DF1C5D1D8A501A00C545B1 /* cells-3.png in Resources */,
 				D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */,
 				D98F35361D87B82A00A52DE6 /* Icon-App-60x60@2x.png in Resources */,
 				D9DF1C611D8A50AC00C545B1 /* list-2.png in Resources */,
 				D9DF1C5F1D8A50A700C545B1 /* list.png in Resources */,
+				D9D755561D8E570B00F5F8DB /* PDV_CellHome.xib in Resources */,
 				D98F352F1D87B82A00A52DE6 /* Icon-App-29x29@1x.png in Resources */,
+				D9D7554A1D8DF8F600F5F8DB /* pokeball_icon@2.png in Resources */,
 				D98F353E1D87B89A00A52DE6 /* pokedex.png in Resources */,
 				D98F35391D87B82A00A52DE6 /* Icon-App-76x76@2x.png in Resources */,
 				D9DF1C431D8A037E00C545B1 /* Checkmark@2x.png in Resources */,
 				D98F35341D87B82A00A52DE6 /* Icon-App-40x40@3x.png in Resources */,
 				D9E4669C1D893E9C0031F13F /* cualpokemon.jpg in Resources */,
+				D9D755501D8DF9AC00F5F8DB /* pokeball_icon-3.png in Resources */,
 				D9DF1C5B1D8A501100C545B1 /* cells-2.png in Resources */,
+				D9D755511D8DF9AC00F5F8DB /* pokeball_icon-2.png in Resources */,
 				D98F35331D87B82A00A52DE6 /* Icon-App-40x40@2x.png in Resources */,
 				D9DF1C551D8A05F100C545B1 /* cancel-2.png in Resources */,
 				D98F353B1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png in Resources */,
 				D9DF1C4D1D8A04A200C545B1 /* cancel-4.png in Resources */,
+				D9D7554C1D8DF8FB00F5F8DB /* pokeball_icon@3.png in Resources */,
 				D98F35311D87B82A00A52DE6 /* Icon-App-29x29@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,6 +616,7 @@
 				D935CE371D879A5300C79EF3 /* MasterViewController.m in Sources */,
 				D935CE311D879A5300C79EF3 /* main.m in Sources */,
 				D935CE3A1D879A5300C79EF3 /* DetailViewController.m in Sources */,
+				D9D7555A1D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m in Sources */,
 				D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */,
 				D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */,
 				D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */,
