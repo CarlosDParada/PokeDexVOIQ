@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Montserrat-Light.otf">
+        <array key="Montserrat-Light.otf">
             <string>Montserrat-Light</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -24,7 +25,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedex.png" translatesAutoresizingMaskIntoConstraints="NO" id="pTZ-BZ-QUe">
-                                <rect key="frame" x="20" y="251" width="171" height="166"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="166" id="nnd-Tk-F1N"/>
                                     <constraint firstAttribute="width" secondItem="pTZ-BZ-QUe" secondAttribute="height" multiplier="163:158" id="of8-wf-AYH"/>
@@ -32,18 +32,16 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carlos David Parada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwK-1d-6W1">
-                                <rect key="frame" x="85" y="477" width="205" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="AcD-NE-sV8"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="sBa-dW-wdT"/>
                                     <constraint firstAttribute="height" constant="26" id="wbT-xp-1xS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voiq-logo-FINAL-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4K-mw-6hL">
-                                <rect key="frame" x="67" y="295" width="240" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S4K-mw-6hL" secondAttribute="height" multiplier="60:19" id="eBl-3D-w12"/>
                                     <constraint firstAttribute="width" constant="240" id="gbq-Rh-qwB"/>
@@ -51,7 +49,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="S4K-mw-6hL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-1" id="2bv-rQ-0y9"/>
                             <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-82" id="80O-yd-TOr"/>
@@ -67,7 +65,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

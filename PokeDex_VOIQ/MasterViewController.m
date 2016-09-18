@@ -75,11 +75,16 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         [self chargeJson];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
+       // NSDate *object = self.objects[indexPath.row];
+        PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+        PDV_CellMenuTableViewCell *CellPokeHome = sender;
+        
+        DetailViewController *controller = segue.destinationViewController;
+        controller.Obj_PokeMenu= Poke;
+        controller.name_PokeMenu = CellPokeHome.namePokemon.text;
+        controller.imagePokeMenu = CellPokeHome.imageView;
+        controller.id_PokeMenu = [NSString stringWithFormat:@"%d",(int)indexPath.row+1 ];
+        
     }
 }
 
@@ -101,7 +106,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
     PDV_CellMenuTableViewCell *cellHome = [[PDV_CellMenuTableViewCell alloc] init];
     [tableView registerNib:[UINib nibWithNibName:@"PDV_CellHome" bundle:nil] forCellReuseIdentifier:@"CellHome"];
     cellHome =[tableView dequeueReusableCellWithIdentifier:@"CellHome"];
@@ -111,15 +116,14 @@
     PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
     NSString *nameBasePokemon = [ self checkGenderPokemon:Poke.name_objPokeAPI];
     
-    //cell.textLabel.text = [nameBasePokemon capitalizedString] ;
      cellHome.namePokemon.text = [nameBasePokemon capitalizedString] ;
     
     cellHome.id_universalPokemon.text = [NSString stringWithFormat:@"%d",(int)indexPath.row + 1] ;
    
     
     NSString *cadenaURL = [NSString stringWithFormat:@"%@%d.png",kURLMedia_PokeApi,(int)indexPath.row+1];
-    //__weak UIImageView *weakImageView = cell.imageView;
-      __weak UIImageView *weakImageView = cellHome.imagemPokemon;
+    __weak UIImageView *weakImageView = cellHome.imagemPokemon;
+    
     
     [cellHome.imagemPokemon setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         UIImageView *strongImageView = weakImageView;
@@ -192,9 +196,12 @@
 */
 
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:( NSIndexPath *)indexPath{
 
 
+    PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    PDV_CellMenuTableViewCell *CellHome = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"showDetail" sender:CellHome];
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     

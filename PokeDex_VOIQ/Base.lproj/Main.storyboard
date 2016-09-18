@@ -6,6 +6,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">
@@ -39,58 +44,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Pokemon XY" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="omH-yJ-qQM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NOx-4b-c5l">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="dci-9j-egP"/>
-                                    <constraint firstAttribute="width" constant="180" id="fgD-gR-RMJ"/>
+                                    <constraint firstAttribute="height" constant="180" id="bo4-Lq-aBJ"/>
+                                    <constraint firstAttribute="width" constant="181" id="e2T-A4-Qt8"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" restorationIdentifier="viewTop" translatesAutoresizingMaskIntoConstraints="NO" id="rJa-dV-WKw">
-                                <color key="backgroundColor" red="0.93333333330000001" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" restorationIdentifier="viewButton" translatesAutoresizingMaskIntoConstraints="NO" id="nWD-Sh-14B">
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="vYt-zQ-bqI"/>
-                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uha-7k-Z64">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="TOC-1y-mPl"/>
+                                    <constraint firstAttribute="width" constant="42" id="eGL-nU-WLm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rJa-dV-WKw" firstAttribute="centerX" secondItem="NOx-4b-c5l" secondAttribute="centerX" id="3Uj-Vd-qf9"/>
-                            <constraint firstItem="nWD-Sh-14B" firstAttribute="bottom" secondItem="GAO-Cl-Wes" secondAttribute="top" id="6Fw-Aa-Jrg"/>
-                            <constraint firstAttribute="bottom" secondItem="rJa-dV-WKw" secondAttribute="bottom" constant="563" id="BKg-8J-6ZL"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="228" id="BPx-QC-MYk"/>
-                            <constraint firstItem="NOx-4b-c5l" firstAttribute="top" secondItem="rJa-dV-WKw" secondAttribute="bottom" id="Buw-cD-z8x"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="4" id="CGt-6X-t34"/>
-                            <constraint firstItem="rJa-dV-WKw" firstAttribute="trailing" secondItem="nWD-Sh-14B" secondAttribute="trailing" id="Fci-ns-KNp"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" id="GO6-WH-HHV"/>
-                            <constraint firstItem="rJa-dV-WKw" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="K2N-4u-tJ2"/>
-                            <constraint firstItem="nWD-Sh-14B" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" constant="627" id="OoK-C6-geN"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="NOx-4b-c5l" secondAttribute="bottom" constant="8" symbolic="YES" id="U0G-OX-Vaq"/>
-                            <constraint firstAttribute="trailing" secondItem="rJa-dV-WKw" secondAttribute="trailing" id="vze-PQ-Hh3"/>
-                            <constraint firstItem="rJa-dV-WKw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="yhe-gc-DzL"/>
-                            <constraint firstItem="rJa-dV-WKw" firstAttribute="leading" secondItem="nWD-Sh-14B" secondAttribute="leading" id="z2H-Gi-TkS"/>
+                            <constraint firstItem="Uha-7k-Z64" firstAttribute="top" secondItem="rJa-dV-WKw" secondAttribute="bottom" constant="8" symbolic="YES" id="00J-gZ-RIf"/>
+                            <constraint firstItem="NOx-4b-c5l" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="24" id="0IO-2Z-rNu"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerX" secondItem="rJa-dV-WKw" secondAttribute="centerX" id="9Xi-84-yUW"/>
+                            <constraint firstItem="NOx-4b-c5l" firstAttribute="centerX" secondItem="nWD-Sh-14B" secondAttribute="centerX" id="9f1-us-fZc"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="NOx-4b-c5l" secondAttribute="bottom" constant="8" symbolic="YES" id="IpC-yf-Cea"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="M4h-eU-Msj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0XM-y9-sOw" secondAttribute="trailing" id="Phs-fj-xm9"/>
+                            <constraint firstItem="rJa-dV-WKw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="Qou-jj-7XH"/>
+                            <constraint firstAttribute="bottom" secondItem="rJa-dV-WKw" secondAttribute="bottom" constant="338" id="RcF-u7-xsw"/>
+                            <constraint firstItem="nWD-Sh-14B" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="UPD-Of-OSW"/>
+                            <constraint firstItem="rJa-dV-WKw" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="8" symbolic="YES" id="fxh-QP-RDO"/>
+                            <constraint firstItem="Uha-7k-Z64" firstAttribute="centerX" secondItem="NOx-4b-c5l" secondAttribute="centerX" id="qx8-hm-kq6"/>
+                            <constraint firstItem="nWD-Sh-14B" firstAttribute="bottom" secondItem="GAO-Cl-Wes" secondAttribute="top" constant="1" id="wOY-gm-MhJ"/>
+                            <constraint firstAttribute="trailing" secondItem="nWD-Sh-14B" secondAttribute="trailing" id="xF3-Ir-dlg"/>
+                            <constraint firstItem="nWD-Sh-14B" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" constant="648" id="yBs-Lu-mOk"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Pokemon X" id="mOI-FS-AaM">
+                        <barButtonItem key="leftBarButtonItem" title="◀︎" id="9fZ-4g-jzk">
+                            <color key="tintColor" red="0.95710706469999995" green="1" blue="0.95962276099999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="goBack:" destination="JEX-9P-axG" id="gLD-rG-GxJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
-                        <outlet property="imagePokemon" destination="NOx-4b-c5l" id="2jE-zz-bo2"/>
+                        <outlet property="id_Poke_Label" destination="Uha-7k-Z64" id="7zJ-fA-p3V"/>
+                        <outlet property="imageViewPokemon" destination="NOx-4b-c5l" id="kPW-2k-Rrh"/>
+                        <outlet property="name_Poke_Label" destination="0XM-y9-sOw" id="PJ7-di-hat"/>
                         <outlet property="viewBotton" destination="nWD-Sh-14B" id="kus-ST-hO4"/>
-                        <outlet property="viewTop" destination="rJa-dV-WKw" id="Nb8-Sw-XK9"/>
+                        <outlet property="viewTop" destination="rJa-dV-WKw" id="YTV-ca-rzY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="128.18590704647679"/>
+            <point key="canvasLocation" x="1441" y="-630"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -99,7 +122,6 @@
                     <toolbarItems/>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
-                        <segue destination="vC3-pB-5Vb" kind="relationship" relationship="detailViewController" id="Tll-UG-LXB"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
@@ -132,9 +154,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -144,29 +163,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="PokeDex" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <segue destination="JEX-9P-axG" kind="show" identifier="showDetail" id="NkD-ic-xFu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="r7l-gg-dq7">
-            <objects>
-                <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="DjV-YW-jjY">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
-    </inferredMetricsTieBreakers>
 </document>

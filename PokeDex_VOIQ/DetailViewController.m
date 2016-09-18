@@ -7,6 +7,9 @@
 //
 
 #import "DetailViewController.h"
+#import "PDV_Obj_PokeApi.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import "PDV_Constans.h"
 
 @interface DetailViewController ()
 
@@ -16,42 +19,52 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-            
-        // Update the view.
-        [self configureView];
-        
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = self.viewTop.bounds;
-        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor redColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
-        [self.viewTop.layer insertSublayer:gradient atIndex:0];
-    }
-}
-
-- (void)configureView {
-    // Update the user interface for the detail item.
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    
+    self.navigationItem.title = self.name_PokeMenu;
+}
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
- UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
- CAGradientLayer *gradient = [CAGradientLayer layer];
- gradient.frame = view.bounds;
- gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
- [view.layer insertSublayer:gradient atIndex:0];
- */
+- (IBAction)goBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+   // [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count -1] animated:YES];
+}
+- (void)configureView {
+    // Update the user interface for the detail item.
+    if (self.name_PokeMenu) {
+        self.name_Poke_Label.text = self.name_PokeMenu;
+    }
+    if (self.id_PokeMenu) {
+        [self.id_Poke_Label setText:self.id_PokeMenu];
+    }
+    __weak UIImageView *weakImageView = self.imageViewPokemon;
+    NSString *cadenaURL = [NSString stringWithFormat:@"%@%@.png",kURLMedia_PokeApi,self.id_PokeMenu];
+    
+    [self.imageViewPokemon setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        UIImageView *strongImageView = weakImageView;
+        if (!strongImageView) return;
+        [UIView transitionWithView:strongImageView
+                          duration:0.3
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            strongImageView.image = image;
+                        }
+                        completion:NULL];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"Failed Load Image \n request - %@ \n response - %@ \n error - %@",request,response,error.description]);
+    }];
+}
+
 @end
