@@ -12,6 +12,8 @@
 #import "PDV_Constans.h"
 #import <AFNetworking.h>
 
+typedef void(^ELSuccessBlockWithOnePokemon)(PDV_Pokemon_Obj  *Pokemon);
+
 typedef void(^ELSuccessBlockWithAllPokemon)(NSMutableArray  *allPokemon);
 typedef void(^ELSuccessBlockWithParcialPokemon)(NSMutableArray  *ParcialPokemon , NSString *URLNext);
 typedef void(^FailureBlock)(NSError *error);
@@ -27,5 +29,6 @@ typedef void(^FailureBlock)(NSError *error);
 
 -(void)getParcialPokemon:(NSString * )URL_PokeAPi sucessBlock:(ELSuccessBlockWithParcialPokemon)sucessBlock
                onFailure:(FailureBlock)failureBlock;
-
+-(void)getDataOnePokemon:(NSString *)id_pokemon sucessBlock:(ELSuccessBlockWithOnePokemon)sucessBlock
+               onFailure:(FailureBlock)failureBlock;
 @end

@@ -13,21 +13,16 @@
 
 @interface PDV_Pokemon_Obj : NSObject
 
-@property (strong, nonatomic) NSString *id_pokemon;
-@property (nonatomic, strong) NSString *num_pokemon;
-@property (strong, nonatomic) NSString *name_pokemon;
-@property (strong, nonatomic) NSString *img_url;
-@property (strong, nonatomic) NSMutableArray *Array_type;
-@property (strong, nonatomic) NSString *height;
-@property (strong, nonatomic) NSString *weight;
-@property (strong, nonatomic) NSString *candy;
-@property (strong, nonatomic) NSString *candy_count;
-@property (strong, nonatomic) NSString *egg;
-@property (strong, nonatomic) NSString *multipliers;
-@property (strong, nonatomic) NSMutableArray *weaknesses;
-@property (strong, nonatomic) NSMutableArray *prev_evolution;
-@property (strong, nonatomic) NSMutableArray *next_evolution;
-
+@property (strong, nonatomic) NSString *id_pokemon; //id
+@property (strong, nonatomic) NSString *name_pokemon; // name
+@property (strong, nonatomic) NSString *img_url; //
+@property (strong, nonatomic) NSMutableArray *Array_Image_Sprite; // sprite
+@property (strong, nonatomic) NSString *height; //height
+@property (strong, nonatomic) NSString *weight; //weight
+@property (strong, nonatomic) NSString *base_experience;
+@property (strong, nonatomic) NSMutableArray *Array_Type;
+@property (strong, nonatomic) NSMutableArray *Array_Abilities;
+@property (strong, nonatomic) NSMutableArray *Array_Statis;
 
 - (instancetype)initWithDictionaryRepresentation:(NSDictionary *)pokemonModel;
 

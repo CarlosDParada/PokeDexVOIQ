@@ -7,11 +7,7 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
-#import "MBProgressHUD.h"
-#import "PDV_CellMenuTableViewCell.h"
-#import <QuartzCore/QuartzCore.h>
+
 
 @interface MasterViewController ()<MBProgressHUDDelegate>
 
@@ -75,7 +71,6 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         [self chargeJson];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-       // NSDate *object = self.objects[indexPath.row];
         PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
         PDV_CellMenuTableViewCell *CellPokeHome = sender;
         
@@ -84,7 +79,9 @@
         controller.name_PokeMenu = CellPokeHome.namePokemon.text;
         controller.imagePokeMenu = CellPokeHome.imageView;
         controller.id_PokeMenu = [NSString stringWithFormat:@"%d",(int)indexPath.row+1 ];
+        controller.Obj_PokeWebService = self.Obj_PokeHomeWebService;
         
+        [self.hudHome hide:YES];
     }
 }
 
@@ -120,7 +117,7 @@
     
     cellHome.id_universalPokemon.text = [NSString stringWithFormat:@"%d",(int)indexPath.row + 1] ;
    
-    
+   
     NSString *cadenaURL = [NSString stringWithFormat:@"%@%d.png",kURLMedia_PokeApi,(int)indexPath.row+1];
     __weak UIImageView *weakImageView = cellHome.imagemPokemon;
     
@@ -178,30 +175,33 @@
     }
 }
 #pragma mark - TableView - Data Source
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.PokemonInWebService removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-
-*/
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:( NSIndexPath *)indexPath{
 
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
-    PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    
+    self.hudHome = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    self.hudHome.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
+    
+    //PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
+    
+    PDV_WebService *webservice = [PDV_WebService webservice];
+    
     PDV_CellMenuTableViewCell *CellHome = [tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"showDetail" sender:CellHome];
+    
+    NSString *id_Poke_Select =[NSString stringWithFormat:@"%@",CellHome.id_universalPokemon.text];
+    
+    [webservice getDataOnePokemon: id_Poke_Select sucessBlock:^(PDV_Pokemon_Obj *Pokemon) {
+         self.Obj_PokeHomeWebService =  Pokemon;
+        [self performSegueWithIdentifier:@"showDetail" sender:CellHome];
+       
+       
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error Get %@" ,error.description);
+    }];
+    
+    
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -225,7 +225,7 @@
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    //hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:0.8];
+    //hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.8];
     hud.color =[ UIColor lightGrayColor];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
@@ -267,7 +267,8 @@
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor redColor];
+    //hud.color =[ UIColor redColor];
+    hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
     
@@ -295,13 +296,15 @@
         
     }];
     
+   
+    
 }
 #pragma mark - More Pokemon
 -(void) LoadMoreParcialPokemonInTableView{
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.color =[ UIColor redColor];
-    
+    //hud.color =[ UIColor redColor];
+    hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
     
     int64_t delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -368,8 +371,8 @@
 - (void)AlertHUD:(NSString *)message nameImage:(NSString *)nameImage delay:(NSString *)delay {
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    //hud.color =[ UIColor colorWithRed:(153/255.0) green:(153/255.0) blue:(153/255.0) alpha:0.9];
-    hud.color =[ UIColor lightGrayColor];
+    //hud.color =[ UIColor lightGrayColor];
+    hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
     hud.mode = MBProgressHUDModeCustomView;
     UIImage *image = [[UIImage imageNamed:nameImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     hud.customView = [[UIImageView alloc] initWithImage:image];

@@ -93,8 +93,58 @@
         NSLog(@"Error: %@", error.userInfo);
         failureBlock(error);
     }];
+}
+-(void)getDataOnePokemon:(NSString *)id_pokemon sucessBlock:(ELSuccessBlockWithOnePokemon)sucessBlock
+               onFailure:(FailureBlock)failureBlock{
 
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",KRULBasePokeAPI,kURLPokemonIDPokeApi,id_pokemon]];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
+        NSLog(@"Progress \n %@",downloadProgress);
+    }success:^(NSURLSessionTask *task, id responseObject) {
+        
+      //  NSDictionary *modelOnePokemon = responseObject[kPokeApiResults];
+
+            PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:responseObject];
+           // [TempAllPokemon addObject:OnePokemon];
+            sucessBlock(OnePokemon);
+            
+        
+        //sucessBlock( nil);
+        
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error.userInfo);
+        failureBlock(error);
+    }];
 }
 
+-(void)getGenderOnePokemon:(NSString *)id_pokemon sucessBlock:(ELSuccessBlockWithOnePokemon)sucessBlock
+                 onFailure:(FailureBlock)failureBlock{
+
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",KRULBasePokeAPI,kURLGenderPokeAPi,id_pokemon]];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
+        NSLog(@"Progress \n %@",downloadProgress);
+    }success:^(NSURLSessionTask *task, id responseObject) {
+        
+        NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
+        for (NSDictionary *modelOnePokemon in responseObject[kPokeApiResults]) {
+            
+            PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:modelOnePokemon];
+            [TempAllPokemon addObject:OnePokemon];
+            
+        }
+        sucessBlock( nil);
+        
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error.userInfo);
+        failureBlock(error);
+    }];
+
+}
 
 @end

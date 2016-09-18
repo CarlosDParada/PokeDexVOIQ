@@ -7,9 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import "PDV_Obj_PokeApi.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
-#import "PDV_Constans.h"
 
 @interface DetailViewController ()
 
@@ -23,13 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+  //  [self LoadPokemonWB];
+    [self LoadSpriteImage];
     [self configureView];
     
     self.navigationItem.title = self.name_PokeMenu;
 }
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,17 +37,23 @@
 }
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-   // [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count -1] animated:YES];
+    [self.webservice.operationQueue cancelAllOperations];
 }
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.name_PokeMenu) {
         self.name_Poke_Label.text = self.name_PokeMenu;
     }
-    if (self.id_PokeMenu) {
-        [self.id_Poke_Label setText:self.id_PokeMenu];
+    if (self.Obj_PokeWebService.id_pokemon) {
+        [self.id_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.id_pokemon]];
     }
-    __weak UIImageView *weakImageView = self.imageViewPokemon;
+    if (self.Obj_PokeWebService.height) {
+        [self.height_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.height]];
+    }
+    if (self.Obj_PokeWebService.weight) {
+        [self.weight_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.weight]];
+    }
+        __weak UIImageView *weakImageView = self.imageViewPokemon;
     NSString *cadenaURL = [NSString stringWithFormat:@"%@%@.png",kURLMedia_PokeApi,self.id_PokeMenu];
     
     [self.imageViewPokemon setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
@@ -65,6 +70,48 @@
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", [NSString stringWithFormat:@"Failed Load Image \n request - %@ \n response - %@ \n error - %@",request,response,error.description]);
     }];
+   
 }
+-(UIImage *) getImageFromURL:(NSString *)fileURL {
+    @autoreleasepool {
+        UIImage * result;
+        
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+        result = [UIImage imageWithData:data];
+        
+        return result;
+    }
+}
+-(void)LoadPokemonWB{
+    self.webservice = [PDV_WebService webservice];
+    [self.webservice getDataOnePokemon:self.id_PokeMenu sucessBlock:^(PDV_Pokemon_Obj *Pokemon) {
+        self.Obj_PokeWebService =  Pokemon;
+        
+        self.weight_Poke_Label.text = self.Obj_PokeWebService.weight;
+        self.height_Poke_Label.text = self.Obj_PokeWebService.height;
+        [self LoadSpriteImage];
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error Get %@" ,error.description);
+    }];
+}
+
+-(void)LoadSpriteImage{
+
+    // Load images
+    NSArray *URLs_ImagePokemonWB = [NSArray arrayWithArray:self.Obj_PokeWebService.Array_Image_Sprite];
+    NSMutableArray *imagePokemonWB = [[NSMutableArray alloc]init];
+    
+    for (NSString *URLImageOnePokemon in URLs_ImagePokemonWB) {
+        UIImage *imagePokeWS = [self getImageFromURL:URLImageOnePokemon];
+        [imagePokemonWB addObject:imagePokeWS ];
+    }
+    
+    // Normal Animation
+    UIImageView *animationImageView = self.imageViewPokemon;
+    animationImageView.animationImages = imagePokemonWB;
+    animationImageView.animationDuration = 4;
+    
+    //[self.view addSubview:animationImageView];
+    [animationImageView startAnimating];}
 
 @end

@@ -23,7 +23,8 @@
 //http://pokeapi.co/api/v2/pokemon/?offset=0
 
 // Max 721 pokemon's
-#define kURLMedia_PokeApi @"http://pokeapi.co/media/img/"
+#define kURLMedia_PokeApi @"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+
 //http://pokeapi.co/media/img/718.png
 
 #define kURLGenderPokeAPi @"api/v2/gender/"
@@ -47,19 +48,16 @@
 #pragma mark - Pokemon
 
 #define kPokemonID @"id"
-#define kPokemonNum @"num"
 #define kPokemonName @"name"
-#define kPokemonImg @"img"
-#define kPokemonType @"type"
-#define kPokemonHeight @"height"
 #define kPokemonWeight @"weight"
-#define kPokemonCandy @"candy"
-#define kPokemonCandy_Count @"candy_count"
-#define kPokemonEgg @"egg"
-#define kPokemonMultipliers @"multipliers"
-#define kPokemonWeknesses @"weknesses"
-#define kPokemonPrev_Evolution @"prev_evolution"
-#define kPokemonNext_Evolution @"next_evolution"
+#define kPokemonSprites @"sprites"
+#define kPokemonHeight @"height"
+#define kPokemonTypes @"types"
+#define kPokemonStats @"stats"
+
+#define kPokemonBaseExp @"base_experience"
+
+
 
 #pragma mark - Next Pokemon
 

@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PDV_WebService.h"
 #import "PDV_Pokemon_Obj.h"
+#import "DetailViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import "MBProgressHUD.h"
+#import "PDV_CellMenuTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @class DetailViewController;
 
@@ -19,6 +24,9 @@
 @property (strong, nonatomic) NSMutableArray *PokemonInWebService;
 
 @property (strong , nonatomic )NSString *nextURL;
+
+@property (weak, nonatomic) PDV_Pokemon_Obj *Obj_PokeHomeWebService;
+@property (strong , nonatomic )MBProgressHUD *hudHome;
 
 @end
 
