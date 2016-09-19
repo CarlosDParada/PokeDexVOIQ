@@ -1,6 +1,6 @@
 # README #
 
-OkeDex_VOIQ
+PokeDex_VOIQ
 
 ## Deployment Target ##
 
