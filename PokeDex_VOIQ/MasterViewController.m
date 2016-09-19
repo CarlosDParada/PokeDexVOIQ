@@ -215,7 +215,8 @@
 
     
     self.hudHome = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    self.hudHome.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
+    self.hudHome.color =[ UIColor colorWithRed:(240/255.0) green:(46/255.0) blue:(12/255.0) alpha:0.9];
+    self.hudHome.labelText = NSLocalizedString(@"Wait...", @"Wait View");
     
     //PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
     
@@ -294,7 +295,7 @@
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     //hud.color =[ UIColor redColor];
-    hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
+    hud.color= [ UIColor colorWithRed:(240/255.0) green:(46/255.0) blue:(12/255.0) alpha:0.9];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
     
@@ -331,8 +332,8 @@
     
     if (![self.nextURL isKindOfClass:[NSNull class]]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        //hud.color =[ UIColor redColor];
-        hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
+        //hud.color =[ UIor];
+        hud.color =[ UIColor colorWithRed:(240/255.0) green:(46/255.0) blue:(12/255.0) alpha:0.9];
         
         int64_t delayInSeconds = 2.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -402,7 +403,7 @@
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     //hud.color =[ UIColor lightGrayColor];
-    hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
+    hud.color =[ UIColor colorWithRed:(240/255.0) green:(46/255.0) blue:(12/255.0) alpha:0.9];
     hud.mode = MBProgressHUDModeCustomView;
     UIImage *image = [[UIImage imageNamed:nameImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     hud.customView = [[UIImageView alloc] initWithImage:image];
@@ -425,7 +426,7 @@
 }
 -(void)changeToGridView{
     UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Pokedex VOIQ" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    alertControllerWS.message = [NSString stringWithFormat:@"\n Developer \n Carlos Parada \n\n Lenguaje \n Objective-C \n\n Library \n AFNetworking \nMBProgressHUD \n\n"];
+    alertControllerWS.message = [NSString stringWithFormat:@"\n Developer \n Carlos Parada \n\n Language \n Objective-C \n\n API \n pokeapi.co \n version 2\n\n Library \n AFNetworking \nMBProgressHUD \n\n"];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     }];
     [alertControllerWS addAction:okAction];

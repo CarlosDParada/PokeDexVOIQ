@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,30 +21,48 @@
                 <frame key="frameInset" width="375" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5GM-Eb-NjF">
-                        <frame key="frameInset" minX="50" minY="3" width="3" height="45"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GM-Eb-NjF">
                         <color key="backgroundColor" red="0.93333333330000001" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="3" id="jT4-V9-lbj"/>
+                        </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cualpokemon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="c9j-Pt-bDf">
-                        <frame key="frameInset" minX="61" minY="3" width="45" height="45"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cualpokemon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="c9j-Pt-bDf">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="ibo-Vh-7eU"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pikachu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-k2-Vag">
-                        <frame key="frameInset" minX="120" minY="5" width="250" height="39.5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-k2-Vag">
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                         <color key="textColor" red="0.37444938500000002" green="0.37444938500000002" blue="0.37444938500000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p8-2y-BdM">
-                        <frame key="frameInset" minX="8" minY="12" width="37" height="25.5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p8-2y-BdM">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="37" id="d49-5O-YVp"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="leading" secondItem="0p8-2y-BdM" secondAttribute="trailing" constant="5" id="35R-5N-zSp"/>
+                    <constraint firstItem="0p8-2y-BdM" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="4" id="3Gf-7a-FMu"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="centerY" secondItem="0p8-2y-BdM" secondAttribute="centerY" id="EDB-fW-AvN"/>
+                    <constraint firstItem="0p8-2y-BdM" firstAttribute="leading" secondItem="RfF-p6-fl8" secondAttribute="leadingMargin" id="HFi-yh-cCB"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="top" secondItem="5GM-Eb-NjF" secondAttribute="top" id="Jh5-uw-SEW"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="-5" id="Q1c-X1-pSB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="c9j-Pt-bDf" secondAttribute="bottom" constant="-7" id="Qkq-5C-L6V"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BoA-k2-Vag" secondAttribute="trailing" constant="-3" id="SIu-DL-Bn7"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="5GM-Eb-NjF" secondAttribute="trailing" constant="8" symbolic="YES" id="U6n-yA-Gsm"/>
+                    <constraint firstItem="BoA-k2-Vag" firstAttribute="leading" secondItem="c9j-Pt-bDf" secondAttribute="trailing" constant="14" id="YDp-GA-tuU"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="bottom" secondItem="5GM-Eb-NjF" secondAttribute="bottom" id="b3K-xs-ggd"/>
+                    <constraint firstItem="BoA-k2-Vag" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="-3" id="gSZ-B5-IO6"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="5GM-Eb-NjF" secondAttribute="trailing" constant="8" id="lLY-dB-yAo"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="RfF-p6-fl8" secondAttribute="leading" constant="61" id="qfq-Dr-hCV"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="centerY" secondItem="BoA-k2-Vag" secondAttribute="centerY" id="viP-g1-USe"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="id_universalPokemon" destination="0p8-2y-BdM" id="omK-d1-xSV"/>

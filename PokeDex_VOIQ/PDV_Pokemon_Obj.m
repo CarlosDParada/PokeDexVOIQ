@@ -17,15 +17,10 @@
         NSDictionary *model = [pokemonModel $dictionaryByRemovingNSNullValues];
         self.id_pokemon = model[kPokemonID];
         self.name_pokemon = model[kPokemonName];
-        //self.Array_Image_Sprite = model[kPokemonSprites];//Array
         self.height = model[kPokemonHeight];
         self.weight = model[kPokemonWeight];
-        self.Array_Type = model[kPokemonTypes];
-        
         self.Array_Statis = model[kPokemonStats];
         self.base_experience = model[kPokemonBaseExp];
-        
-//        self.prev_evolution = model[kPokemonPrev_Evolution];//Array
         if (model[kPokemonSprites]) {
             NSMutableArray *tempURLIamge = [[NSMutableArray alloc]init];
             for (NSDictionary *modelSpritePokemon in model[kPokemonSprites]) {
@@ -39,7 +34,7 @@
         if (model[kPokemonTypes]) {
             NSMutableArray *tempTypePoke = [[NSMutableArray alloc]init];
             for (NSDictionary *modelTypePokemon in model[kPokemonTypes]) {
-                //NSDictionary *pokemonType =[model[kPokemonSprites] objectForKey:modelTypePokemon];
+               
                 if (![modelTypePokemon isKindOfClass:[NSNull class]]) { // validation Null
                     PDV_Type_PokeApi *typePoke =[[PDV_Type_PokeApi alloc] initWithDictionaryRepresentation:modelTypePokemon];
                     [tempTypePoke addObject:typePoke];
