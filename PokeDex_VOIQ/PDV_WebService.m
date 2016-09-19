@@ -48,9 +48,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     
-    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
-        NSLog(@"Progress \n %@",downloadProgress);
-    }success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
         NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
@@ -75,9 +73,7 @@
     NSURL *URL = [NSURL URLWithString:URL_PokeAPi];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
-        NSLog(@"Progress \n %@",downloadProgress);
-    }success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
        // NSLog(@"JSON: %@", responseObject);
         
         NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
@@ -100,9 +96,7 @@
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",KRULBasePokeAPI,kURLPokemonIDPokeApi,id_pokemon]];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
-        NSLog(@"Progress \n %@",downloadProgress);
-    }success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         
       //  NSDictionary *modelOnePokemon = responseObject[kPokeApiResults];
 
@@ -126,9 +120,7 @@
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",KRULBasePokeAPI,kURLGenderPokeAPi,id_pokemon]];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager GET:URL.absoluteString parameters:nil progress:^(NSProgress *downloadProgress) {
-        NSLog(@"Progress \n %@",downloadProgress);
-    }success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         
        
             PDV_Gender_PokeApi *GenderOnePokemon = [[PDV_Gender_PokeApi alloc] initWithDictionaryRepresentation:responseObject];

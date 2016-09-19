@@ -433,7 +433,7 @@
     
 }
 -(void)LoadPokemonByGender{
-    for (int i = 0; i <= 3; i++) {
+    for (int i = 1; i <= 3; i++) {
        // [self loadData:i];
         PDV_WebService *webservice = [PDV_WebService webservice];
         //PDV_Gender_PokeApi *listPokemonByGente= [[PDV_Gender_PokeApi alloc]init];
