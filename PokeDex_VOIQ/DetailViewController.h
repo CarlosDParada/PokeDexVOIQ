@@ -15,12 +15,13 @@
 #import "PDV_WebService.h"
 #import "PDV_Gender_PokeApi.h"
 #import "AFImageDownloader.h"
+#import "PDV_Type_PokeApi.h"
 
 @interface DetailViewController : UIViewController
 @property (strong,nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPokemon;
 @property (weak, nonatomic) IBOutlet UILabel *id_Poke_Label;
-@property (weak, nonatomic) IBOutlet UILabel *name_Poke_Label;
+@property (weak, nonatomic) IBOutlet UILabel *type_Poke_Label;
 @property (weak, nonatomic) IBOutlet UILabel *gender_Poke_Label;
 @property (weak, nonatomic) IBOutlet UILabel *weight_Poke_Label;
 @property (weak, nonatomic) IBOutlet UILabel *height_Poke_Label;

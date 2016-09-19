@@ -18,6 +18,16 @@
         NSDictionary *model = [Gender_PokeApi_Model $dictionaryByRemovingNSNullValues];
         self.id_objPokeAPI = model[kPokemonID];
         self.gender_objPokeAPI = model[kPokeApiName];
+        self.pokemon_species_details=model[kPokemonSpeciesDetail];
+        self.required_for_evolution = model[kPokemonRequiredForEvolution];
+        
+        NSMutableArray *tempPokemonByGeneder= [[NSMutableArray alloc]init];
+        for (NSDictionary *modelOnePokemon in model[kPokemonSpeciesDetail]) {
+            NSString *OnePokemon = [NSString stringWithFormat:@"%@",[[modelOnePokemon objectForKey:kPokemonSpecies] objectForKey:kPokeApiName]];
+            [tempPokemonByGeneder addObject:OnePokemon];
+        }
+        self.pokemon_species_details= tempPokemonByGeneder;
+        
     }
     return self;
 }

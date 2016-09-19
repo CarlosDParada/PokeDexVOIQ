@@ -41,6 +41,8 @@
     [self.refreshControl addTarget:self
                             action:@selector(LoadPokemon)
                   forControlEvents:UIControlEventValueChanged];
+    self.PokemonByGenderInWebService = [[NSMutableArray alloc]init];
+    [self LoadPokemonByGender];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,16 +55,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-}
+//
+//- (void)insertNewObject:(id)sender {
+//    if (!self.objects) {
+//        self.objects = [[NSMutableArray alloc] init];
+//    }
+//    [self.objects insertObject:[NSDate date] atIndex:0];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    
+//}
 
 
 
@@ -70,13 +72,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        [self chargeJson];
+     
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
         PDV_CellMenuTableViewCell *CellPokeHome = sender;
         
         DetailViewController *controller = segue.destinationViewController;
         controller.Obj_PokeMenu= Poke;
+        controller.gender_PokeMenu = [self checkTypeGenderPokemon:[[NSString stringWithFormat:@"%@", CellPokeHome.namePokemon.text]lowercaseString]];
         controller.id_PokeMenu =CellPokeHome.id_universalPokemon.text;
         controller.name_PokeMenu = CellPokeHome.namePokemon.text;
         controller.imagePokeMenu = CellPokeHome.imageView;
@@ -86,7 +89,35 @@
         [self.hudHome hide:YES];
     }
 }
+#pragma mark - Check Gender One Poke
 
+-(NSString *)checkTypeGenderPokemon:(NSString * )namePokemon{
+    //name_objPokeAPI
+    PDV_Gender_PokeApi *temp0 = self.PokemonByGenderInWebService[0];
+    NSMutableArray *ArrayTemp = temp0.pokemon_species_details;
+    BOOL isGenderless = [ArrayTemp containsObject: namePokemon];
+
+    if (isGenderless == NO) {
+        PDV_Gender_PokeApi *temp1 = self.PokemonByGenderInWebService[1];
+        NSMutableArray *ArrayTemp = temp1.pokemon_species_details;
+        BOOL isMale = [ArrayTemp containsObject: namePokemon];
+        if (isMale==NO) {
+            PDV_Gender_PokeApi *temp3 = self.PokemonByGenderInWebService[2];
+            NSMutableArray *ArrayTemp = temp3.pokemon_species_details;
+            BOOL isFemale = [ArrayTemp containsObject: namePokemon];
+            if (isFemale==NO) {
+                return @" ";
+            }else{
+                return temp3.gender_objPokeAPI;
+            }
+        }else{
+            return temp1.gender_objPokeAPI;
+        }
+    }else {
+        return temp0.gender_objPokeAPI;
+    }
+    return nil;
+}
 #pragma mark - Table View Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -142,16 +173,7 @@
     
     return cellHome;
 }
--(NSString *)returnID_PokeAPI:(PDV_Obj_PokeApi *)PokeAPI{
-    
-    NSString *onlyNumber = [[PokeAPI.url_objPokeAPI componentsSeparatedByCharactersInSet:
-                            [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-                           componentsJoinedByString:@""];
-    NSString *onlyID = [onlyNumber substringWithRange:NSMakeRange(1, [onlyNumber length]-1)];
-    
-    return onlyID;
 
-}
 #pragma mark - CheckGener
 -(NSString *)checkGenderPokemon:(NSString * )NamePokemon{
 
@@ -245,10 +267,6 @@
     }
     
      [self.tableView reloadData];
-    
-
-    
-    
 }
 
 
@@ -267,32 +285,9 @@
         NSLog(@"Error Get %@" ,error.description);
     }];
     
-//    NSString *url = [NSString stringWithFormat:@"http://pokeapi.co/api/v2/pokemon/%d/", pokemonID];
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    [manager GET:url parameters:nil progress:^(NSProgress *downloadProgress) {
-//        NSLog(@"Progress \n %@",downloadProgress);
-//    }success:^(NSURLSessionTask *task, id responseObject) {
-//       // [self addPokemon:responseObject];
-//        
-//        
-//    } failure:^(NSURLSessionTask *operation, NSError *error) {
-//        NSLog(@"Error Get %@" ,error.description);
-//        
-//        [hud hide:YES];
-//        [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
-//        UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
-//        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-//        }];
-//        [alertControllerWS addAction:okAction];
-//        [self presentViewController:alertControllerWS animated:YES completion:nil];
-//
-//    }];
-//    
-    
+
 }
 
-///////////
 
 -(void)LoadParcialPokemonWebService{
     
@@ -417,7 +412,17 @@
     [hud hide:YES afterDelay:[delay doubleValue]];
     
 }
-
+#pragma mark - Action
+-(NSString *)returnID_PokeAPI:(PDV_Obj_PokeApi *)PokeAPI{
+    
+    NSString *onlyNumber = [[PokeAPI.url_objPokeAPI componentsSeparatedByCharactersInSet:
+                             [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                            componentsJoinedByString:@""];
+    NSString *onlyID = [onlyNumber substringWithRange:NSMakeRange(1, [onlyNumber length]-1)];
+    
+    return onlyID;
+    
+}
 -(void)changeToGridView{
     UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Ups" message:nil preferredStyle:UIAlertControllerStyleAlert];
     alertControllerWS.message = [NSString stringWithFormat:@"\n Este codigo no esta implementado \n\n Proximamente..."];
@@ -427,15 +432,17 @@
     [self presentViewController:alertControllerWS animated:YES completion:nil];
     
 }
-
--(void) chargeJson{
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"pokedex" ofType:@"json"];
-    NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
-    NSError *error =  nil;
-    NSArray *jsonDataArray = [NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-    
-    NSLog(@"%@",jsonDataArray);
-    
+-(void)LoadPokemonByGender{
+    for (int i = 0; i <= 3; i++) {
+       // [self loadData:i];
+        PDV_WebService *webservice = [PDV_WebService webservice];
+        //PDV_Gender_PokeApi *listPokemonByGente= [[PDV_Gender_PokeApi alloc]init];
+        [webservice getGenderOnePokemon:[NSString stringWithFormat:@"%d",i] sucessBlock:^(PDV_Gender_PokeApi *Gender_Pokemon) {
+            [self.PokemonByGenderInWebService addObject:Gender_Pokemon];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error = %@",error.userInfo);
+        }];
+    }
 }
+
 @end

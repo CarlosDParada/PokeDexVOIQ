@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		49202D2AEF99A22B71A5B44D /* libPods-PokeDex_VOIQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7A064055074768B327485B /* libPods-PokeDex_VOIQ.a */; };
 		D90EECDF1D8F9931008F8E61 /* PDV_Type_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */; };
-		D92072AC1D889778004E3F82 /* pokedex.json in Resources */ = {isa = PBXBuildFile; fileRef = D92072AB1D889778004E3F82 /* pokedex.json */; };
 		D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */ = {isa = PBXBuildFile; fileRef = D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */; };
 		D935CE311D879A5300C79EF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D935CE301D879A5300C79EF3 /* main.m */; };
 		D935CE341D879A5300C79EF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D935CE331D879A5300C79EF3 /* AppDelegate.m */; };
@@ -90,7 +89,6 @@
 		C5A7DD57FA80A9C085FA8BFC /* Pods-PokeDex_VOIQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDex_VOIQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDex_VOIQ/Pods-PokeDex_VOIQ.debug.xcconfig"; sourceTree = "<group>"; };
 		D90EECDD1D8F9931008F8E61 /* PDV_Type_PokeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Type_PokeApi.h; sourceTree = "<group>"; };
 		D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Type_PokeApi.m; sourceTree = "<group>"; };
-		D92072AB1D889778004E3F82 /* pokedex.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pokedex.json; sourceTree = "<group>"; };
 		D92072AE1D8899C3004E3F82 /* PDV_Pokemon_Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Pokemon_Obj.h; sourceTree = "<group>"; };
 		D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Pokemon_Obj.m; sourceTree = "<group>"; };
 		D935CE2C1D879A5300C79EF3 /* PokeDex_VOIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDex_VOIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,7 +262,6 @@
 			children = (
 				D9E4668A1D88BB810031F13F /* NSDictionary+StripNSNulls.h */,
 				D9E4668B1D88BB810031F13F /* NSDictionary+StripNSNulls.m */,
-				D92072AB1D889778004E3F82 /* pokedex.json */,
 				D935CE3E1D879A5300C79EF3 /* Assets.xcassets */,
 				D935CE431D879A5300C79EF3 /* Info.plist */,
 				D935CE321D879A5300C79EF3 /* AppDelegate.h */,
@@ -500,7 +497,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98F35301D87B82A00A52DE6 /* Icon-App-29x29@2x.png in Resources */,
-				D92072AC1D889778004E3F82 /* pokedex.json in Resources */,
 				D98F35351D87B82A00A52DE6 /* Icon-App-60x60@1x.png in Resources */,
 				D98F353A1D87B82A00A52DE6 /* Icon-App-76x76@3x.png in Resources */,
 				D935CE421D879A5300C79EF3 /* LaunchScreen.storyboard in Resources */,

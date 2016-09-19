@@ -145,7 +145,7 @@
                         <outlet property="height_Poke_Label" destination="lhq-cu-eSV" id="UoO-RP-k10"/>
                         <outlet property="id_Poke_Label" destination="Uha-7k-Z64" id="7zJ-fA-p3V"/>
                         <outlet property="imageViewPokemon" destination="NOx-4b-c5l" id="kPW-2k-Rrh"/>
-                        <outlet property="name_Poke_Label" destination="0XM-y9-sOw" id="PJ7-di-hat"/>
+                        <outlet property="type_Poke_Label" destination="0XM-y9-sOw" id="2z6-Cn-jOv"/>
                         <outlet property="weight_Poke_Label" destination="8tY-fx-Pma" id="zY1-ia-OVp"/>
                     </connections>
                 </viewController>

@@ -7,7 +7,7 @@
 //
 
 #import "PDV_Pokemon_Obj.h"
-
+#import "PDV_Type_PokeApi.h"
 #import "NSDictionary+StripNSNulls.h"
 
 @implementation PDV_Pokemon_Obj
@@ -21,6 +21,7 @@
         self.height = model[kPokemonHeight];
         self.weight = model[kPokemonWeight];
         self.Array_Type = model[kPokemonTypes];
+        
         self.Array_Statis = model[kPokemonStats];
         self.base_experience = model[kPokemonBaseExp];
         
@@ -35,13 +36,20 @@
             }
             self.Array_Image_Sprite = tempURLIamge;
         }
+        if (model[kPokemonTypes]) {
+            NSMutableArray *tempTypePoke = [[NSMutableArray alloc]init];
+            for (NSDictionary *modelTypePokemon in model[kPokemonTypes]) {
+                //NSDictionary *pokemonType =[model[kPokemonSprites] objectForKey:modelTypePokemon];
+                if (![modelTypePokemon isKindOfClass:[NSNull class]]) { // validation Null
+                    PDV_Type_PokeApi *typePoke =[[PDV_Type_PokeApi alloc] initWithDictionaryRepresentation:modelTypePokemon];
+                    [tempTypePoke addObject:typePoke];
+                }
+            }
+            
+            self.Array_Type = tempTypePoke;
+        }
         
-//        if (model[kPokemonNext_Evolution]) {
-//            for (NSDictionary *modelNextPokemon in model[kPokemonNext_Evolution]) {
-//                PDV_NextPokemon *pokemonNext = [[PDV_NextPokemon alloc] initWithDictionaryRepresentation:modelNextPokemon];
-//                [self.prev_evolution addObject:pokemonNext];
-//            }
-//        }
+
         
     }
     return self;

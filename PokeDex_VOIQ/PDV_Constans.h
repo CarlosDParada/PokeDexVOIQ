@@ -36,6 +36,10 @@
 #define kPokeApiURL @"url"
 #define kPokeApiName @ "name"
 
+#pragma mark - type PokeApi
+#define kPokeApiSlot @"slot"
+#define kPokeApiType @"type"
+
 #pragma mark - Parcial Response PokeApi
 #define kPokeApiCount @"count"
 #define kPokeApiPrevious @ "previous"
@@ -58,12 +62,11 @@
 
 #define kPokemonBaseExp @"base_experience"
 
+#pragma mark - Gender
 
-
-#pragma mark - Next Pokemon
-
-#define kPokemonNextNum @"num"
-#define kPokemonNextName @"name"
+#define kPokemonSpeciesDetail @"pokemon_species_details"
+#define kPokemonRequiredForEvolution @"required_for_evolution"
+#define kPokemonSpecies @"pokemon_species"
 
 
 #endif /* PDV_Constans_h */

@@ -44,11 +44,14 @@
 }
 - (void)configureView {
     // Update the user interface for the detail item.
-    if (self.name_PokeMenu) {
-        self.name_Poke_Label.text = self.name_PokeMenu;
-    }
+//    if (self.name_PokeMenu) {
+//        self.name_Poke_Label.text = self.name_PokeMenu;
+//    }
     if (self.Obj_PokeWebService.id_pokemon) {
         [self.id_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.id_pokemon]];
+    }
+    if (self.gender_PokeMenu) {
+        self.gender_Poke_Label.text =[ [NSString stringWithFormat:@"%@",self.gender_PokeMenu]capitalizedString];
     }
     if (self.Obj_PokeWebService.height) {
         [self.height_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.height]];
@@ -56,7 +59,25 @@
     if (self.Obj_PokeWebService.weight) {
         [self.weight_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.weight]];
     }
-        __weak UIImageView *weakImageView = self.imageViewPokemon;
+    if (self.Obj_PokeWebService.Array_Type) {
+        if(  self.Obj_PokeWebService.Array_Type.count == 1) {
+            //One Type
+            PDV_Type_PokeApi *temType = self.Obj_PokeWebService.Array_Type[0];
+            self.type_Poke_Label.text = [[NSString stringWithFormat:@"%@",temType.type_TypePokeAPI.name_objPokeAPI] capitalizedString];
+            
+        }else if ( self.Obj_PokeWebService.Array_Type.count == 2) {
+            // Two Type
+            //One Type
+            PDV_Type_PokeApi *temType = self.Obj_PokeWebService.Array_Type[0];
+            PDV_Type_PokeApi *temType2 = self.Obj_PokeWebService.Array_Type[1];
+            self.type_Poke_Label.text = [[NSString stringWithFormat:@"%@ / %@",temType2.type_TypePokeAPI.name_objPokeAPI,temType.type_TypePokeAPI.name_objPokeAPI] capitalizedString];
+
+        }else{
+            self.type_Poke_Label.text = @" ";
+        }
+        
+    }
+    __weak UIImageView *weakImageView = self.imageViewPokemon;
     NSString *cadenaURL = [NSString stringWithFormat:@"%@%@.png",kURLMedia_PokeApi,self.id_PokeMenu];
     
     [self.imageViewPokemon setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cadenaURL]] placeholderImage:[UIImage imageNamed:@"cualpokemon.jpg"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
@@ -96,17 +117,7 @@
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get %@" ,error.description);
     }];
- /*
-    NSLog(@"ID Pokemon = %@",self.Obj_PokeWebService.id_pokemon);
-    [self.webservice getGenderOnePokemon:self.Obj_PokeWebService.id_pokemon sucessBlock:^(PDV_Gender_PokeApi *Gender_Pokemon) {
-        self.Obj_GenderPokeWS = Gender_Pokemon;
-        if (self.Obj_GenderPokeWS.gender_objPokeAPI) {
-            self.gender_Poke_Label.text = [[NSString stringWithFormat:@"%@",self.Obj_GenderPokeWS.gender_objPokeAPI]capitalizedString];
-        }
-    } onFailure:^(NSError *error) {
-        NSLog(@"%@",error.userInfo);
-    }];
-  */
+
 }
 
 -(void)LoadSpriteImage{
@@ -123,7 +134,7 @@
     // Normal Animation
     UIImageView *animationImageView = self.imageViewPokemon;
     animationImageView.animationImages = imagePokemonWB;
-    animationImageView.animationDuration = 5;
+    animationImageView.animationDuration = 6;
     
     //[self.view addSubview:animationImageView];
     [animationImageView startAnimating];}

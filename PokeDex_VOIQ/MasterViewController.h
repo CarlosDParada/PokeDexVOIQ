@@ -28,5 +28,7 @@
 @property (weak, nonatomic) PDV_Pokemon_Obj *Obj_PokeHomeWebService;
 @property (strong , nonatomic )MBProgressHUD *hudHome;
 
+@property (strong, nonatomic) NSMutableArray *PokemonByGenderInWebService;
+
 @end
 

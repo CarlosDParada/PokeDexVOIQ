@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDV_Obj_PokeApi.h"
 
 @interface PDV_Type_PokeApi : NSObject
+
+@property (strong, nonatomic) NSString *slot_TypePokeAPI;
+@property (nonatomic, strong) PDV_Obj_PokeApi *type_TypePokeAPI;
+
+- (instancetype)initWithDictionaryRepresentation:(NSDictionary *)Type_PokeApi_Model;
+
 
 @end

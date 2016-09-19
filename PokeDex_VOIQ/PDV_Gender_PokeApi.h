@@ -11,6 +11,8 @@
 @interface PDV_Gender_PokeApi : NSObject
 @property (strong, nonatomic) NSString *id_objPokeAPI;
 @property (nonatomic, strong) NSString *gender_objPokeAPI;
+@property (nonatomic, strong) NSMutableArray *pokemon_species_details;
+@property (nonatomic, strong) NSMutableArray *required_for_evolution;
 
 - (instancetype)initWithDictionaryRepresentation:(NSDictionary *)Gender_PokeApi_Model;
 @end
