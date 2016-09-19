@@ -25,6 +25,16 @@
     [self LoadSpriteImage];
     [self configureView];
     
+    self.webservice = [PDV_WebService webservice];
+    [self.webservice getGenderOnePokemon:self.id_PokeMenu sucessBlock:^(PDV_Gender_PokeApi *Gender_Pokemon) {
+        self.Obj_GenderPokeWS = Gender_Pokemon;
+        if (self.Obj_GenderPokeWS.gender_objPokeAPI) {
+            self.gender_Poke_Label.text = [NSString stringWithFormat:@"%@",self.Obj_GenderPokeWS.gender_objPokeAPI];
+        }
+    } onFailure:^(NSError *error) {
+        NSLog(@"%@",error.userInfo);
+    }];
+    
     self.navigationItem.title = self.name_PokeMenu;
 }
 -(void) viewWillAppear:(BOOL)animated{

@@ -120,7 +120,7 @@
     }];
 }
 
--(void)getGenderOnePokemon:(NSString *)id_pokemon sucessBlock:(ELSuccessBlockWithOnePokemon)sucessBlock
+-(void)getGenderOnePokemon:(NSString *)id_pokemon sucessBlock:(ELSuccessBlockWithGenderOnePokemon)sucessBlock
                  onFailure:(FailureBlock)failureBlock{
 
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",KRULBasePokeAPI,kURLGenderPokeAPi,id_pokemon]];
@@ -130,14 +130,11 @@
         NSLog(@"Progress \n %@",downloadProgress);
     }success:^(NSURLSessionTask *task, id responseObject) {
         
-        NSMutableArray *TempAllPokemon = [[NSMutableArray alloc]init];
-        for (NSDictionary *modelOnePokemon in responseObject[kPokeApiResults]) {
-            
-            PDV_Pokemon_Obj *OnePokemon = [[PDV_Pokemon_Obj alloc] initWithDictionaryRepresentation:modelOnePokemon];
-            [TempAllPokemon addObject:OnePokemon];
-            
-        }
-        sucessBlock( nil);
+       
+            PDV_Gender_PokeApi *GenderOnePokemon = [[PDV_Gender_PokeApi alloc] initWithDictionaryRepresentation:responseObject];
+        
+            sucessBlock(GenderOnePokemon);
+
         
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {

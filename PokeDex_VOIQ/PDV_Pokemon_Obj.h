@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDV_NextPokemon.h"
 #import "PDV_Constans.h"
 
 

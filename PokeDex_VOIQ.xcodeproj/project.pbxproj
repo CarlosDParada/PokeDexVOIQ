@@ -45,6 +45,7 @@
 		D9D755521D8DF9AC00F5F8DB /* pokeball_icon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D7554F1D8DF9AC00F5F8DB /* pokeball_icon-1.png */; };
 		D9D755561D8E570B00F5F8DB /* PDV_CellHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D755551D8E570B00F5F8DB /* PDV_CellHome.xib */; };
 		D9D7555A1D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D755591D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m */; };
+		D9D755641D8F52E300F5F8DB /* PDV_Gender_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D755631D8F52E300F5F8DB /* PDV_Gender_PokeApi.m */; };
 		D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */; };
 		D9DF1C431D8A037E00C545B1 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */; };
 		D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */; };
@@ -60,7 +61,6 @@
 		D9DF1C5F1D8A50A700C545B1 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C5E1D8A50A700C545B1 /* list.png */; };
 		D9DF1C611D8A50AC00C545B1 /* list-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C601D8A50AC00C545B1 /* list-2.png */; };
 		D9DF1C631D8A50B100C545B1 /* list-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF1C621D8A50B100C545B1 /* list-3.png */; };
-		D9E466881D88B6AA0031F13F /* PDV_NextPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */; };
 		D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E4668B1D88BB810031F13F /* NSDictionary+StripNSNulls.m */; };
 		D9E466961D890C910031F13F /* PDV_WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E466951D890C910031F13F /* PDV_WebService.m */; };
 		D9E4669C1D893E9C0031F13F /* cualpokemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9E4669B1D893E9C0031F13F /* cualpokemon.jpg */; };
@@ -139,6 +139,8 @@
 		D9D755551D8E570B00F5F8DB /* PDV_CellHome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDV_CellHome.xib; sourceTree = "<group>"; };
 		D9D755581D8E592100F5F8DB /* PDV_CellMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_CellMenuTableViewCell.h; sourceTree = "<group>"; };
 		D9D755591D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_CellMenuTableViewCell.m; sourceTree = "<group>"; };
+		D9D755621D8F52E300F5F8DB /* PDV_Gender_PokeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Gender_PokeApi.h; sourceTree = "<group>"; };
+		D9D755631D8F52E300F5F8DB /* PDV_Gender_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Gender_PokeApi.m; sourceTree = "<group>"; };
 		D9DF1C3F1D8A037E00C545B1 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkmark.png; sourceTree = "<group>"; };
 		D9DF1C401D8A037E00C545B1 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@2x.png"; sourceTree = "<group>"; };
 		D9DF1C411D8A037E00C545B1 /* Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@3x.png"; sourceTree = "<group>"; };
@@ -154,8 +156,6 @@
 		D9DF1C5E1D8A50A700C545B1 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		D9DF1C601D8A50AC00C545B1 /* list-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-2.png"; sourceTree = "<group>"; };
 		D9DF1C621D8A50B100C545B1 /* list-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-3.png"; sourceTree = "<group>"; };
-		D9E466861D88B6AA0031F13F /* PDV_NextPokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_NextPokemon.h; sourceTree = "<group>"; };
-		D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_NextPokemon.m; sourceTree = "<group>"; };
 		D9E466891D88B8240031F13F /* PDV_Constans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDV_Constans.h; sourceTree = "<group>"; };
 		D9E4668A1D88BB810031F13F /* NSDictionary+StripNSNulls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StripNSNulls.h"; sourceTree = "<group>"; };
 		D9E4668B1D88BB810031F13F /* NSDictionary+StripNSNulls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StripNSNulls.m"; sourceTree = "<group>"; };
@@ -212,8 +212,6 @@
 			children = (
 				D92072AE1D8899C3004E3F82 /* PDV_Pokemon_Obj.h */,
 				D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */,
-				D9E466861D88B6AA0031F13F /* PDV_NextPokemon.h */,
-				D9E466871D88B6AA0031F13F /* PDV_NextPokemon.m */,
 			);
 			name = "Pokemon Obj";
 			sourceTree = "<group>";
@@ -344,6 +342,8 @@
 			children = (
 				D9D7553E1D8D329000F5F8DB /* PDV_Obj_PokeApi.h */,
 				D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */,
+				D9D755621D8F52E300F5F8DB /* PDV_Gender_PokeApi.h */,
+				D9D755631D8F52E300F5F8DB /* PDV_Gender_PokeApi.m */,
 				D9D755421D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.h */,
 				D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */,
 			);
@@ -611,9 +611,9 @@
 			files = (
 				D9E466961D890C910031F13F /* PDV_WebService.m in Sources */,
 				D935CE341D879A5300C79EF3 /* AppDelegate.m in Sources */,
-				D9E466881D88B6AA0031F13F /* PDV_NextPokemon.m in Sources */,
 				D9D755441D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m in Sources */,
 				D935CE371D879A5300C79EF3 /* MasterViewController.m in Sources */,
+				D9D755641D8F52E300F5F8DB /* PDV_Gender_PokeApi.m in Sources */,
 				D935CE311D879A5300C79EF3 /* main.m in Sources */,
 				D935CE3A1D879A5300C79EF3 /* DetailViewController.m in Sources */,
 				D9D7555A1D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m in Sources */,

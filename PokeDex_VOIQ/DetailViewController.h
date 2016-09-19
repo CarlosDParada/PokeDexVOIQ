@@ -13,7 +13,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "PDV_Constans.h"
 #import "PDV_WebService.h"
-
+#import "PDV_Gender_PokeApi.h"
 #import "AFImageDownloader.h"
 
 @interface DetailViewController : UIViewController
@@ -28,10 +28,12 @@
 
 @property (weak, nonatomic) NSString *id_PokeMenu;
 @property (weak, nonatomic) NSString *name_PokeMenu;
+
+@property (weak, nonatomic) NSString *gender_PokeMenu;
 @property (weak , nonatomic) UIImageView *imagePokeMenu;
 @property (weak, nonatomic) PDV_Obj_PokeApi *Obj_PokeMenu;
 @property (strong, nonatomic) PDV_Pokemon_Obj *Obj_PokeWebService;
-
+@property (strong, nonatomic) PDV_Gender_PokeApi *Obj_GenderPokeWS;
 @property (weak, nonatomic) PDV_WebService *webservice;
 @end
 

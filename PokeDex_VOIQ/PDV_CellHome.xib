@@ -24,12 +24,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GM-Eb-NjF">
                         <color key="backgroundColor" red="0.93333333330000001" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="3" id="rJV-Em-dO6"/>
+                            <constraint firstAttribute="width" constant="3" id="wAN-za-GeR"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p8-2y-BdM">
                         <constraints>
-                            <constraint firstAttribute="width" constant="27" id="cg7-H0-Urt"/>
+                            <constraint firstAttribute="width" constant="27" id="lqZ-G5-Q2c"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,9 +37,9 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cualpokemon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="c9j-Pt-bDf">
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Ijy-qP-XRO"/>
-                            <constraint firstAttribute="width" constant="45" id="OXl-aT-Lr9"/>
-                            <constraint firstAttribute="height" constant="45" id="qdI-ST-Gca"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="0fd-fM-vrx"/>
+                            <constraint firstAttribute="height" constant="45" id="dNy-88-7VT"/>
+                            <constraint firstAttribute="width" constant="45" id="sLf-hk-l5A"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-k2-Vag">
@@ -49,21 +49,20 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0p8-2y-BdM" firstAttribute="centerY" secondItem="5GM-Eb-NjF" secondAttribute="centerY" id="09R-9D-j3u"/>
-                    <constraint firstItem="0p8-2y-BdM" firstAttribute="centerY" secondItem="c9j-Pt-bDf" secondAttribute="centerY" id="1Pe-HH-UmO"/>
-                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="leading" secondItem="0p8-2y-BdM" secondAttribute="trailing" constant="3" id="40O-Hs-ZJu"/>
-                    <constraint firstItem="BoA-k2-Vag" firstAttribute="top" secondItem="5GM-Eb-NjF" secondAttribute="top" id="4pM-xj-ZE6"/>
-                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="-6" id="7ee-I1-0W8"/>
-                    <constraint firstItem="BoA-k2-Vag" firstAttribute="bottom" secondItem="5GM-Eb-NjF" secondAttribute="bottom" id="EOv-3k-I2b"/>
-                    <constraint firstItem="0p8-2y-BdM" firstAttribute="centerY" secondItem="RfF-p6-fl8" secondAttribute="centerY" id="NJJ-ID-eUR"/>
-                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="-3" id="P6h-yt-eJ8"/>
-                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="RfF-p6-fl8" secondAttribute="leading" constant="42" id="VCs-a6-rpl"/>
-                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="5GM-Eb-NjF" secondAttribute="trailing" constant="4" id="cib-hh-IrW"/>
-                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="centerY" secondItem="5GM-Eb-NjF" secondAttribute="centerY" id="cwD-U7-s6f"/>
-                    <constraint firstItem="BoA-k2-Vag" firstAttribute="leading" secondItem="c9j-Pt-bDf" secondAttribute="trailing" constant="8" id="ehZ-Vp-l3Z"/>
-                    <constraint firstItem="0p8-2y-BdM" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="6" id="fmC-Fc-Lty"/>
-                    <constraint firstItem="0p8-2y-BdM" firstAttribute="leading" secondItem="RfF-p6-fl8" secondAttribute="leadingMargin" constant="-3" id="vd8-QZ-9Oh"/>
-                    <constraint firstItem="BoA-k2-Vag" firstAttribute="trailing" secondItem="RfF-p6-fl8" secondAttribute="trailingMargin" id="yTq-7k-5gC"/>
+                    <constraint firstItem="0p8-2y-BdM" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="4" id="Dkp-VI-hN6"/>
+                    <constraint firstItem="0p8-2y-BdM" firstAttribute="centerY" secondItem="BoA-k2-Vag" secondAttribute="centerY" id="Dlk-Mg-Cpy"/>
+                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="centerY" secondItem="RfF-p6-fl8" secondAttribute="centerY" id="F6g-5t-8MG"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="0p8-2y-BdM" secondAttribute="trailing" constant="8" symbolic="YES" id="Icy-Wa-Cdf"/>
+                    <constraint firstItem="0p8-2y-BdM" firstAttribute="centerY" secondItem="RfF-p6-fl8" secondAttribute="centerY" id="O14-76-I1L"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="-5" id="OoI-8p-a5v"/>
+                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="bottom" secondItem="c9j-Pt-bDf" secondAttribute="bottom" id="PL6-yk-Tj4"/>
+                    <constraint firstItem="BoA-k2-Vag" firstAttribute="leading" secondItem="c9j-Pt-bDf" secondAttribute="trailing" constant="8" symbolic="YES" id="Ri8-Yb-e6z"/>
+                    <constraint firstItem="BoA-k2-Vag" firstAttribute="top" secondItem="RfF-p6-fl8" secondAttribute="topMargin" constant="-3" id="cTB-CS-ycV"/>
+                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="centerY" secondItem="c9j-Pt-bDf" secondAttribute="centerY" id="ngC-82-Nrt"/>
+                    <constraint firstItem="c9j-Pt-bDf" firstAttribute="leading" secondItem="5GM-Eb-NjF" secondAttribute="trailing" constant="2" id="qBh-BX-RSP"/>
+                    <constraint firstItem="BoA-k2-Vag" firstAttribute="trailing" secondItem="RfF-p6-fl8" secondAttribute="trailingMargin" id="qXp-Fw-bhT"/>
+                    <constraint firstItem="0p8-2y-BdM" firstAttribute="leading" secondItem="RfF-p6-fl8" secondAttribute="leadingMargin" constant="-1" id="rdD-15-BjT"/>
+                    <constraint firstItem="5GM-Eb-NjF" firstAttribute="leading" secondItem="0p8-2y-BdM" secondAttribute="trailing" constant="3" id="tOW-oN-5kk"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
