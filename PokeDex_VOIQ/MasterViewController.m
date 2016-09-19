@@ -424,8 +424,8 @@
     
 }
 -(void)changeToGridView{
-    UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Ups" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    alertControllerWS.message = [NSString stringWithFormat:@"\n Este codigo no esta implementado \n\n Proximamente..."];
+    UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Pokedex VOIQ" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    alertControllerWS.message = [NSString stringWithFormat:@"\n Developer \n Carlos Parada \n\n Lenguaje \n Objective-C \n\n Library \n AFNetworking \nMBProgressHUD \n\n"];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     }];
     [alertControllerWS addAction:okAction];

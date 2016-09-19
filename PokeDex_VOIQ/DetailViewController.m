@@ -40,7 +40,7 @@
 }
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    [self.webservice.operationQueue cancelAllOperations];
+    //[self.webservice.operationQueue cancelAllOperations];
 }
 - (void)configureView {
     // Update the user interface for the detail item.

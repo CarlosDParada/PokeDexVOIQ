@@ -3,14 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Montserrat-Light.otf">
-            <string>Montserrat-Light</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -24,55 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedex.png" translatesAutoresizingMaskIntoConstraints="NO" id="pTZ-BZ-QUe">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="166" id="nnd-Tk-F1N"/>
-                                    <constraint firstAttribute="width" secondItem="pTZ-BZ-QUe" secondAttribute="height" multiplier="163:158" id="of8-wf-AYH"/>
-                                    <constraint firstAttribute="width" constant="171" id="xYD-2j-YJM"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carlos David Parada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwK-1d-6W1">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="205" id="AcD-NE-sV8"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="sBa-dW-wdT"/>
-                                    <constraint firstAttribute="height" constant="26" id="wbT-xp-1xS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voiq-logo-FINAL-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4K-mw-6hL">
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="S4K-mw-6hL" secondAttribute="height" multiplier="60:19" id="eBl-3D-w12"/>
-                                    <constraint firstAttribute="width" constant="240" id="gbq-Rh-qwB"/>
-                                    <constraint firstAttribute="height" constant="76" id="qHU-dw-ptJ"/>
-                                </constraints>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_PDV(750x1334).png" translatesAutoresizingMaskIntoConstraints="NO" id="SaP-uh-UWG"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="S4K-mw-6hL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-1" id="2bv-rQ-0y9"/>
-                            <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-82" id="80O-yd-TOr"/>
-                            <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Vds-bq-1D2"/>
-                            <constraint firstItem="vwK-1d-6W1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Yy5-3V-EJV"/>
-                            <constraint firstItem="S4K-mw-6hL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kYM-1k-JKd"/>
-                            <constraint firstItem="pTZ-BZ-QUe" firstAttribute="centerX" secondItem="S4K-mw-6hL" secondAttribute="centerX" constant="-81.5" id="sZi-zP-DNg"/>
-                            <constraint firstItem="vwK-1d-6W1" firstAttribute="top" secondItem="pTZ-BZ-QUe" secondAttribute="bottom" constant="60" id="wcK-wj-stI"/>
+                            <constraint firstAttribute="trailing" secondItem="SaP-uh-UWG" secondAttribute="trailing" id="Fle-sZ-0Re"/>
+                            <constraint firstItem="SaP-uh-UWG" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="SQ4-bq-FZ0"/>
+                            <constraint firstItem="SaP-uh-UWG" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="TXu-Dh-xAf"/>
+                            <constraint firstItem="SaP-uh-UWG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="jyQ-j0-Sum"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2bv-rQ-0y9"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374"/>
+            <point key="canvasLocation" x="52" y="373.76311844077964"/>
         </scene>
     </scenes>
     <resources>
-        <image name="pokedex.png" width="460" height="545"/>
-        <image name="voiq-logo-FINAL-1.png" width="600" height="202"/>
+        <image name="splash_PDV(750x1334).png" width="750" height="1334"/>
     </resources>
 </document>

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		49202D2AEF99A22B71A5B44D /* libPods-PokeDex_VOIQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7A064055074768B327485B /* libPods-PokeDex_VOIQ.a */; };
 		D90EECDF1D8F9931008F8E61 /* PDV_Type_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */; };
+		D90EECF41D8FC718008F8E61 /* splash@2.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EECF21D8FC718008F8E61 /* splash@2.png */; };
+		D90EECF51D8FC718008F8E61 /* splash@3.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EECF31D8FC718008F8E61 /* splash@3.png */; };
+		D90EECF71D8FC7D8008F8E61 /* splash_PDV(1242x2208).png in Resources */ = {isa = PBXBuildFile; fileRef = D90EECF61D8FC7D8008F8E61 /* splash_PDV(1242x2208).png */; };
+		D90EECF91D8FC858008F8E61 /* splash_PDV(750x1334).png in Resources */ = {isa = PBXBuildFile; fileRef = D90EECF81D8FC858008F8E61 /* splash_PDV(750x1334).png */; };
 		D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */ = {isa = PBXBuildFile; fileRef = D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */; };
 		D935CE311D879A5300C79EF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D935CE301D879A5300C79EF3 /* main.m */; };
 		D935CE341D879A5300C79EF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D935CE331D879A5300C79EF3 /* AppDelegate.m */; };
@@ -89,6 +93,10 @@
 		C5A7DD57FA80A9C085FA8BFC /* Pods-PokeDex_VOIQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDex_VOIQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDex_VOIQ/Pods-PokeDex_VOIQ.debug.xcconfig"; sourceTree = "<group>"; };
 		D90EECDD1D8F9931008F8E61 /* PDV_Type_PokeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Type_PokeApi.h; sourceTree = "<group>"; };
 		D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Type_PokeApi.m; sourceTree = "<group>"; };
+		D90EECF21D8FC718008F8E61 /* splash@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2.png"; sourceTree = "<group>"; };
+		D90EECF31D8FC718008F8E61 /* splash@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@3.png"; sourceTree = "<group>"; };
+		D90EECF61D8FC7D8008F8E61 /* splash_PDV(1242x2208).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_PDV(1242x2208).png"; sourceTree = "<group>"; };
+		D90EECF81D8FC858008F8E61 /* splash_PDV(750x1334).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_PDV(750x1334).png"; sourceTree = "<group>"; };
 		D92072AE1D8899C3004E3F82 /* PDV_Pokemon_Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Pokemon_Obj.h; sourceTree = "<group>"; };
 		D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Pokemon_Obj.m; sourceTree = "<group>"; };
 		D935CE2C1D879A5300C79EF3 /* PokeDex_VOIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDex_VOIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +301,10 @@
 		D98F35211D87B7FA00A52DE6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D90EECF81D8FC858008F8E61 /* splash_PDV(750x1334).png */,
+				D90EECF61D8FC7D8008F8E61 /* splash_PDV(1242x2208).png */,
+				D90EECF21D8FC718008F8E61 /* splash@2.png */,
+				D90EECF31D8FC718008F8E61 /* splash@3.png */,
 				D9D7554D1D8DF9AC00F5F8DB /* pokeball_icon-3.png */,
 				D9D7554E1D8DF9AC00F5F8DB /* pokeball_icon-2.png */,
 				D9D7554F1D8DF9AC00F5F8DB /* pokeball_icon-1.png */,
@@ -503,9 +515,11 @@
 				D9DF1C631D8A50B100C545B1 /* list-3.png in Resources */,
 				D98F35371D87B82A00A52DE6 /* Icon-App-60x60@3x.png in Resources */,
 				D9DF1C531D8A05ED00C545B1 /* cancel.png in Resources */,
+				D90EECF41D8FC718008F8E61 /* splash@2.png in Resources */,
 				D98F35321D87B82A00A52DE6 /* Icon-App-40x40@1x.png in Resources */,
 				D98F35401D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png in Resources */,
 				D9DF1C511D8A04AF00C545B1 /* cancel-6.png in Resources */,
+				D90EECF91D8FC858008F8E61 /* splash_PDV(750x1334).png in Resources */,
 				D935CE3F1D879A5300C79EF3 /* Assets.xcassets in Resources */,
 				D9DF1C571D8A05FB00C545B1 /* cancel-3.png in Resources */,
 				D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */,
@@ -515,11 +529,13 @@
 				D9D755481D8DF8F200F5F8DB /* pokeball_icon@1.png in Resources */,
 				D9DF1C591D8A500C00C545B1 /* cells.png in Resources */,
 				D98F35381D87B82A00A52DE6 /* Icon-App-76x76@1x.png in Resources */,
+				D90EECF71D8FC7D8008F8E61 /* splash_PDV(1242x2208).png in Resources */,
 				D9D755461D8DF88000F5F8DB /* pokeball_icon.png in Resources */,
 				D9DF1C5D1D8A501A00C545B1 /* cells-3.png in Resources */,
 				D9DF1C441D8A037E00C545B1 /* Checkmark@3x.png in Resources */,
 				D98F35361D87B82A00A52DE6 /* Icon-App-60x60@2x.png in Resources */,
 				D9DF1C611D8A50AC00C545B1 /* list-2.png in Resources */,
+				D90EECF51D8FC718008F8E61 /* splash@3.png in Resources */,
 				D9DF1C5F1D8A50A700C545B1 /* list.png in Resources */,
 				D9D755561D8E570B00F5F8DB /* PDV_CellHome.xib in Resources */,
 				D98F352F1D87B82A00A52DE6 /* Icon-App-29x29@1x.png in Resources */,
@@ -767,6 +783,7 @@
 			baseConfigurationReference = C5A7DD57FA80A9C085FA8BFC /* Pods-PokeDex_VOIQ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 44AY3H6LVU;
 				INFOPLIST_FILE = PokeDex_VOIQ/Info.plist;
@@ -782,6 +799,7 @@
 			baseConfigurationReference = 04B3610C7F094223871B1EDB /* Pods-PokeDex_VOIQ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 44AY3H6LVU;
 				INFOPLIST_FILE = PokeDex_VOIQ/Info.plist;
