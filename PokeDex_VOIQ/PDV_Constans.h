@@ -18,7 +18,8 @@
 #define KRULBasePokeAPI @"http://pokeapi.co/"
 
 #define KRULBasePokeAPIV2 @"api/v2/"
-// only 10 Pokemon
+// only 10 Pokemon @"api/v2/pokemon/?limit=400"
+#define kURLPokemonesPokeApi @"api/v2/pokemon/?limit=400"
 #define kURLPokemonIDPokeApi @"api/v2/pokemon/"
 //http://pokeapi.co/api/v2/pokemon/?offset=0
 

@@ -25,20 +25,13 @@
     [self LoadSpriteImage];
     [self configureView];
     
-    self.webservice = [PDV_WebService webservice];
-    [self.webservice getGenderOnePokemon:self.id_PokeMenu sucessBlock:^(PDV_Gender_PokeApi *Gender_Pokemon) {
-        self.Obj_GenderPokeWS = Gender_Pokemon;
-        if (self.Obj_GenderPokeWS.gender_objPokeAPI) {
-            self.gender_Poke_Label.text = [NSString stringWithFormat:@"%@",self.Obj_GenderPokeWS.gender_objPokeAPI];
-        }
-    } onFailure:^(NSError *error) {
-        NSLog(@"%@",error.userInfo);
-    }];
     
     self.navigationItem.title = self.name_PokeMenu;
 }
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,6 +96,17 @@
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get %@" ,error.description);
     }];
+ /*
+    NSLog(@"ID Pokemon = %@",self.Obj_PokeWebService.id_pokemon);
+    [self.webservice getGenderOnePokemon:self.Obj_PokeWebService.id_pokemon sucessBlock:^(PDV_Gender_PokeApi *Gender_Pokemon) {
+        self.Obj_GenderPokeWS = Gender_Pokemon;
+        if (self.Obj_GenderPokeWS.gender_objPokeAPI) {
+            self.gender_Poke_Label.text = [[NSString stringWithFormat:@"%@",self.Obj_GenderPokeWS.gender_objPokeAPI]capitalizedString];
+        }
+    } onFailure:^(NSError *error) {
+        NSLog(@"%@",error.userInfo);
+    }];
+  */
 }
 
 -(void)LoadSpriteImage{
@@ -119,7 +123,7 @@
     // Normal Animation
     UIImageView *animationImageView = self.imageViewPokemon;
     animationImageView.animationImages = imagePokemonWB;
-    animationImageView.animationDuration = 4;
+    animationImageView.animationDuration = 5;
     
     //[self.view addSubview:animationImageView];
     [animationImageView startAnimating];}

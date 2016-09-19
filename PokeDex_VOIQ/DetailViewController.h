@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *height_Poke_Label;
 
 
-@property (weak, nonatomic) NSString *id_PokeMenu;
+@property (strong, nonatomic) NSString *id_PokeMenu;
 @property (weak, nonatomic) NSString *name_PokeMenu;
 
 @property (weak, nonatomic) NSString *gender_PokeMenu;

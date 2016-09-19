@@ -76,6 +76,7 @@
         
         DetailViewController *controller = segue.destinationViewController;
         controller.Obj_PokeMenu= Poke;
+        controller.id_PokeMenu =CellPokeHome.id_universalPokemon.text;
         controller.name_PokeMenu = CellPokeHome.namePokemon.text;
         controller.imagePokeMenu = CellPokeHome.imageView;
         controller.id_PokeMenu = [NSString stringWithFormat:@"%d",(int)indexPath.row+1 ];
@@ -114,7 +115,11 @@
     NSString *nameBasePokemon = [ self checkGenderPokemon:Poke.name_objPokeAPI];
     
      cellHome.namePokemon.text = [nameBasePokemon capitalizedString] ;
-    
+   // 721
+    NSString *id_temp= [NSString stringWithFormat:@"%d",(int)indexPath.row + 1];
+    if ([id_temp intValue] >= 722) {
+        
+    }
     cellHome.id_universalPokemon.text = [NSString stringWithFormat:@"%d",(int)indexPath.row + 1] ;
    
    
@@ -273,7 +278,7 @@
     
     
     PDV_WebService *webservice = [PDV_WebService webservice];
-    NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,kURLPokemonIDPokeApi];
+    NSString *URLCall = [NSString stringWithFormat:@"%@%@",KRULBasePokeAPI,kURLPokemonesPokeApi];
     
     [webservice getParcialPokemon:URLCall sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
       //  NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
@@ -301,49 +306,53 @@
 }
 #pragma mark - More Pokemon
 -(void) LoadMoreParcialPokemonInTableView{
+    NSLog(@"URL Next ,%@",self.nextURL);
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    //hud.color =[ UIColor redColor];
-    hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
-    
-    int64_t delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-        PDV_WebService *webservice = [PDV_WebService webservice];
-        [webservice getParcialPokemon:self.nextURL sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
-            
-            // build the index paths for insertion
-            // since you're adding to the end of datasource, the new rows will start at count
-            NSMutableArray *indexPaths = [NSMutableArray array];
-            NSInteger currentCount = self.PokemonInWebService.count;
-            for (int i = 0; i < ParcialPokemon.count; i++) {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:0]];
-            }
-            
-            // do the insertion
-            NSMutableArray *TempArray = [[self.PokemonInWebService arrayByAddingObjectsFromArray:ParcialPokemon] mutableCopy];
-            self.PokemonInWebService =TempArray;
-            self.nextURL = URLNext;
-            
-            // tell the table view to update (at all of the inserted index paths)
-            [self.tableView beginUpdates];
-            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-            [self.tableView endUpdates];
-            [hud hide:YES];
-            
-        } onFailure:^(NSError *error) {
-            NSLog(@"Error Get %@" ,error.description);
-            
-            UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-                [hud hide:YES];
-            }];
-            [alertControllerWS addAction:okAction];
-            [self presentViewController:alertControllerWS animated:YES completion:nil];
-        }] ;
+    if (![self.nextURL isKindOfClass:[NSNull class]]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        //hud.color =[ UIColor redColor];
+        hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.9];
         
-    });
+        int64_t delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+            PDV_WebService *webservice = [PDV_WebService webservice];
+            [webservice getParcialPokemon:self.nextURL sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
+                
+                // build the index paths for insertion
+                // since you're adding to the end of datasource, the new rows will start at count
+                NSMutableArray *indexPaths = [NSMutableArray array];
+                NSInteger currentCount = self.PokemonInWebService.count;
+                for (int i = 0; i < ParcialPokemon.count; i++) {
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:0]];
+                }
+                
+                // do the insertion
+                NSMutableArray *TempArray = [[self.PokemonInWebService arrayByAddingObjectsFromArray:ParcialPokemon] mutableCopy];
+                self.PokemonInWebService =TempArray;
+                self.nextURL = URLNext;
+                
+                // tell the table view to update (at all of the inserted index paths)
+                [self.tableView beginUpdates];
+                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                [self.tableView endUpdates];
+                [hud hide:YES];
+                
+            } onFailure:^(NSError *error) {
+                NSLog(@"Error Get %@" ,error.description);
+                
+                UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+                    [hud hide:YES];
+                }];
+                [alertControllerWS addAction:okAction];
+                [self presentViewController:alertControllerWS animated:YES completion:nil];
+            }] ;
+            
+        });
+ 
+    }
 }
 
 
