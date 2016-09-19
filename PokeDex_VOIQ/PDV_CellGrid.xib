@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellGridPoke" id="uhv-7D-gr6" customClass="PDV_Cellrid_CollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yp-LT-HfI">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulbasaur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlV-cT-if5">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="ifw-Vr-k0F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10034" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeO-eq-gih">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5iV-Rl-i3Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" red="0.94117647059999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4P-Rb-v3B">
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.1787236307" blue="0.047865671839999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cualpokemon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9Ba-hx-lZN">
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="700" constant="77" id="i5o-Sc-b9P"/>
+                                    <constraint firstAttribute="height" priority="700" constant="77" id="laf-hR-1qr"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.0" blue="0.0" alpha="0.072373466257668717" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Ba-hx-lZN" firstAttribute="leading" secondItem="7Yp-LT-HfI" secondAttribute="leading" priority="800" constant="10" id="3fc-wR-b3Z"/>
+                            <constraint firstItem="Q4P-Rb-v3B" firstAttribute="bottom" secondItem="9Ba-hx-lZN" secondAttribute="bottom" constant="2" id="8RF-ej-7Sf"/>
+                            <constraint firstAttribute="bottom" secondItem="VlV-cT-if5" secondAttribute="bottom" id="Btk-fB-X2g"/>
+                            <constraint firstItem="Q4P-Rb-v3B" firstAttribute="centerX" secondItem="VlV-cT-if5" secondAttribute="centerX" id="E6Q-Vj-9fP"/>
+                            <constraint firstItem="oeO-eq-gih" firstAttribute="top" secondItem="9Ba-hx-lZN" secondAttribute="top" constant="-6" id="M5k-SP-W2T"/>
+                            <constraint firstAttribute="trailing" secondItem="oeO-eq-gih" secondAttribute="trailing" priority="300" constant="56" id="OrX-Ra-hKT"/>
+                            <constraint firstItem="Q4P-Rb-v3B" firstAttribute="top" secondItem="VlV-cT-if5" secondAttribute="top" id="Que-bf-d1q"/>
+                            <constraint firstItem="VlV-cT-if5" firstAttribute="top" secondItem="9Ba-hx-lZN" secondAttribute="bottom" constant="1" id="T8m-NP-fGm"/>
+                            <constraint firstItem="Q4P-Rb-v3B" firstAttribute="leading" secondItem="7Yp-LT-HfI" secondAttribute="leading" constant="16" id="dm1-W0-PHk"/>
+                            <constraint firstItem="9Ba-hx-lZN" firstAttribute="centerX" secondItem="VlV-cT-if5" secondAttribute="centerX" constant="-1.5" id="gla-xB-JOR"/>
+                            <constraint firstAttribute="trailing" secondItem="VlV-cT-if5" secondAttribute="trailing" id="lEz-GY-Hr9"/>
+                            <constraint firstItem="oeO-eq-gih" firstAttribute="top" secondItem="7Yp-LT-HfI" secondAttribute="top" id="nZt-ZG-3zJ"/>
+                            <constraint firstItem="VlV-cT-if5" firstAttribute="top" secondItem="oeO-eq-gih" secondAttribute="bottom" priority="800" constant="64" id="nd4-m8-BMg"/>
+                            <constraint firstItem="oeO-eq-gih" firstAttribute="leading" secondItem="VlV-cT-if5" secondAttribute="leading" constant="5" id="tMG-db-ihu"/>
+                            <constraint firstItem="oeO-eq-gih" firstAttribute="leading" secondItem="7Yp-LT-HfI" secondAttribute="leading" constant="5" id="xoa-Ac-eM1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="7Yp-LT-HfI" firstAttribute="top" secondItem="uhv-7D-gr6" secondAttribute="top" id="991-Cg-Uyg"/>
+                <constraint firstAttribute="bottom" secondItem="7Yp-LT-HfI" secondAttribute="bottom" id="IQG-SN-ELi"/>
+                <constraint firstItem="7Yp-LT-HfI" firstAttribute="leading" secondItem="uhv-7D-gr6" secondAttribute="leading" id="d5q-O3-eB1"/>
+                <constraint firstAttribute="trailing" secondItem="7Yp-LT-HfI" secondAttribute="trailing" id="jBs-Sz-PaZ"/>
+            </constraints>
+            <size key="customSize" width="128" height="102"/>
+            <connections>
+                <outlet property="id_universalPokemon" destination="oeO-eq-gih" id="yep-Hm-cif"/>
+                <outlet property="imagemPokemon" destination="9Ba-hx-lZN" id="mm8-tv-wGH"/>
+                <outlet property="namePokemon" destination="VlV-cT-if5" id="DNk-c3-FUK"/>
+            </connections>
+            <point key="canvasLocation" x="-124" y="-24"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cualpokemon.jpg" width="100" height="100"/>
+    </resources>
+</document>

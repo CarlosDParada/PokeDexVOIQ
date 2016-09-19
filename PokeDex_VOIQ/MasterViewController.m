@@ -8,7 +8,7 @@
 
 #import "MasterViewController.h"
 
-
+#import "MasterGridPokemonCollectionViewController.h"
 @interface MasterViewController ()<MBProgressHUDDelegate>
 
 @property NSMutableArray *objects;
@@ -19,9 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Button Grid
-    //UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(showInfoDeveloper) ];
-    //addButtonR.tintColor = [UIColor whiteColor];
-    //self.navigationItem.rightBarButtonItem = addButtonR;
+    UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(showGridCollectionView) ];
+    addButtonR.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = addButtonR;
     
     // Button Left
     UIBarButtonItem *addButtonL = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pokedex"] style:UIBarButtonItemStyleDone target:self action:@selector(showInfoDeveloper) ];
@@ -87,6 +87,9 @@
         controller.Obj_PokeWebService = self.Obj_PokeHomeWebService;
         
         [self.hudHome hide:YES];
+    }if ([[segue identifier] isEqualToString:@"showGrid"]) {
+        
+        MasterGridPokemonCollectionViewController *controllerGrid = segue.destinationViewController;
     }
 }
 #pragma mark - Check Gender One Poke
@@ -217,8 +220,6 @@
     self.hudHome = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     self.hudHome.color =[ UIColor colorWithRed:(240/255.0) green:(46/255.0) blue:(12/255.0) alpha:0.9];
     self.hudHome.labelText = NSLocalizedString(@"Wait...", @"Wait View");
-    
-    //PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
     
     PDV_WebService *webservice = [PDV_WebService webservice];
     
@@ -424,9 +425,12 @@
     return onlyID;
     
 }
+-(void)showGridCollectionView{
+    [self performSegueWithIdentifier:@"showGrid" sender:nil];
+}
 -(void)showInfoDeveloper{
     UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Pokedex VOIQ" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    alertControllerWS.message = [NSString stringWithFormat:@"\n Developer \n Carlos Parada \n\n Language \n Objective-C \n\n API \n pokeapi.co \n version 2\n\n Library \n AFNetworking \nMBProgressHUD \n\n"];
+    alertControllerWS.message = [NSString stringWithFormat:@"UITableView\n\n Developer \n Carlos Parada \n\n Language \n Objective-C \n\n API \n pokeapi.co \n version 2\n\n Library \n AFNetworking \nMBProgressHUD \n\n"];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     }];
     [alertControllerWS addAction:okAction];

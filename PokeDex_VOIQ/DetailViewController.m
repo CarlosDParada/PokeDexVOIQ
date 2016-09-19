@@ -44,12 +44,12 @@
 }
 - (void)configureView {
     // Update the user interface for the detail item.
-//    if (self.name_PokeMenu) {
-//        self.name_Poke_Label.text = self.name_PokeMenu;
-//    }
+
     if (self.Obj_PokeWebService.id_pokemon) {
         [self.id_Poke_Label setText:[NSString stringWithFormat:@"%@",self.Obj_PokeWebService.id_pokemon]];
     }
+    if(self.name_PokeMenu)
+        [self.name_Poke_Label setText:[NSString stringWithFormat:@"%@",self.name_PokeMenu]];
     if (self.gender_PokeMenu) {
         self.gender_Poke_Label.text =[ [NSString stringWithFormat:@"%@",self.gender_PokeMenu]capitalizedString];
     }

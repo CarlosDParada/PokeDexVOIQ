@@ -38,6 +38,9 @@
 		D98F353B1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F352E1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png */; };
 		D98F353E1D87B89A00A52DE6 /* pokedex.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353D1D87B89A00A52DE6 /* pokedex.png */; };
 		D98F35401D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */; };
+		D9BDEA741D90012000AE07C5 /* MasterGridPokemonCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BDEA731D90012000AE07C5 /* MasterGridPokemonCollectionViewController.m */; };
+		D9BDEA781D90033000AE07C5 /* PDV_CellGrid.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BDEA771D90033000AE07C5 /* PDV_CellGrid.xib */; };
+		D9BDEA7B1D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BDEA7A1D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.m */; };
 		D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */; };
 		D9D755441D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */; };
 		D9D755461D8DF88000F5F8DB /* pokeball_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D755451D8DF88000F5F8DB /* pokeball_icon.png */; };
@@ -134,6 +137,11 @@
 		D98F353F1D87B8AF00A52DE6 /* voiq-logo-FINAL-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voiq-logo-FINAL-1.png"; sourceTree = "<group>"; };
 		D98F35411D87BA8700A52DE6 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		D98F35421D87BA9F00A52DE6 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		D9BDEA721D90012000AE07C5 /* MasterGridPokemonCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterGridPokemonCollectionViewController.h; sourceTree = "<group>"; };
+		D9BDEA731D90012000AE07C5 /* MasterGridPokemonCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterGridPokemonCollectionViewController.m; sourceTree = "<group>"; };
+		D9BDEA771D90033000AE07C5 /* PDV_CellGrid.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDV_CellGrid.xib; sourceTree = "<group>"; };
+		D9BDEA791D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Cellrid_CollectionViewCell.h; sourceTree = "<group>"; };
+		D9BDEA7A1D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Cellrid_CollectionViewCell.m; sourceTree = "<group>"; };
 		D9D7553E1D8D329000F5F8DB /* PDV_Obj_PokeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Obj_PokeApi.h; sourceTree = "<group>"; };
 		D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Obj_PokeApi.m; sourceTree = "<group>"; };
 		D9D755421D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_ParcialPokemon_PokeAPi.h; sourceTree = "<group>"; };
@@ -253,9 +261,8 @@
 				D9D755411D8D329900F5F8DB /* PokeApi.co */,
 				D92072AD1D889991004E3F82 /* Pokemon Obj */,
 				D9E466931D890BE90031F13F /* Support */,
-				D9D755571D8E58F200F5F8DB /* Cell */,
-				D935CE351D879A5300C79EF3 /* MasterViewController.h */,
-				D935CE361D879A5300C79EF3 /* MasterViewController.m */,
+				D9BDEA761D9001A000AE07C5 /* List */,
+				D9BDEA751D90012E00AE07C5 /* GRid */,
 				D935CE381D879A5300C79EF3 /* DetailViewController.h */,
 				D935CE391D879A5300C79EF3 /* DetailViewController.m */,
 				D935CE3B1D879A5300C79EF3 /* Main.storyboard */,
@@ -347,6 +354,28 @@
 				D98F352E1D87B82A00A52DE6 /* Icon-App-83.5x83.5@2x.png */,
 			);
 			name = Icone;
+			sourceTree = "<group>";
+		};
+		D9BDEA751D90012E00AE07C5 /* GRid */ = {
+			isa = PBXGroup;
+			children = (
+				D9BDEA721D90012000AE07C5 /* MasterGridPokemonCollectionViewController.h */,
+				D9BDEA731D90012000AE07C5 /* MasterGridPokemonCollectionViewController.m */,
+				D9BDEA771D90033000AE07C5 /* PDV_CellGrid.xib */,
+				D9BDEA791D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.h */,
+				D9BDEA7A1D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.m */,
+			);
+			name = GRid;
+			sourceTree = "<group>";
+		};
+		D9BDEA761D9001A000AE07C5 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D935CE351D879A5300C79EF3 /* MasterViewController.h */,
+				D935CE361D879A5300C79EF3 /* MasterViewController.m */,
+				D9D755571D8E58F200F5F8DB /* Cell */,
+			);
+			name = List;
 			sourceTree = "<group>";
 		};
 		D9D755411D8D329900F5F8DB /* PokeApi.co */ = {
@@ -522,6 +551,7 @@
 				D90EECF91D8FC858008F8E61 /* splash_PDV(750x1334).png in Resources */,
 				D935CE3F1D879A5300C79EF3 /* Assets.xcassets in Resources */,
 				D9DF1C571D8A05FB00C545B1 /* cancel-3.png in Resources */,
+				D9BDEA781D90033000AE07C5 /* PDV_CellGrid.xib in Resources */,
 				D9DF1C421D8A037E00C545B1 /* Checkmark.png in Resources */,
 				D935CE3D1D879A5300C79EF3 /* Main.storyboard in Resources */,
 				D9DF1C4F1D8A04A700C545B1 /* cancel-5.png in Resources */,
@@ -632,11 +662,13 @@
 				D935CE371D879A5300C79EF3 /* MasterViewController.m in Sources */,
 				D9D755641D8F52E300F5F8DB /* PDV_Gender_PokeApi.m in Sources */,
 				D935CE311D879A5300C79EF3 /* main.m in Sources */,
+				D9BDEA741D90012000AE07C5 /* MasterGridPokemonCollectionViewController.m in Sources */,
 				D935CE3A1D879A5300C79EF3 /* DetailViewController.m in Sources */,
 				D9D7555A1D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m in Sources */,
 				D90EECDF1D8F9931008F8E61 /* PDV_Type_PokeApi.m in Sources */,
 				D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */,
 				D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */,
+				D9BDEA7B1D90045B00AE07C5 /* PDV_Cellrid_CollectionViewCell.m in Sources */,
 				D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
