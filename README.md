@@ -47,7 +47,6 @@ The view shows a Sprite Image with all the images that have the API for a partic
 
 ## Structure ##
 
-Has:
 - PDV_webservice unifies all queries to the API, managing the use of the session, so that can be called from any viewController.
 - PDV_Constans is a class that manages the constants of applications, so that for changing a value not need to change it in classes that use it. This class contains the urls needed for the project and keys to the API responses.
 - NSObject is used to manipulate the responses of queries and thus control errors.
