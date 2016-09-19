@@ -1,10 +1,10 @@
 # README #
 
-PokeDex_VOIQ
+PokeDex_VOIQ 
 
 ## Deployment Target ##
 
-iOS 8.3
+iOS 9.3
 
 ## Language ##
 
