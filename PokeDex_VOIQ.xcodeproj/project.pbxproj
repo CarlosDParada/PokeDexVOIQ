@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49202D2AEF99A22B71A5B44D /* libPods-PokeDex_VOIQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7A064055074768B327485B /* libPods-PokeDex_VOIQ.a */; };
+		D90EECDF1D8F9931008F8E61 /* PDV_Type_PokeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */; };
 		D92072AC1D889778004E3F82 /* pokedex.json in Resources */ = {isa = PBXBuildFile; fileRef = D92072AB1D889778004E3F82 /* pokedex.json */; };
 		D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */ = {isa = PBXBuildFile; fileRef = D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */; };
 		D935CE311D879A5300C79EF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D935CE301D879A5300C79EF3 /* main.m */; };
@@ -87,6 +88,8 @@
 		04B3610C7F094223871B1EDB /* Pods-PokeDex_VOIQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDex_VOIQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDex_VOIQ/Pods-PokeDex_VOIQ.release.xcconfig"; sourceTree = "<group>"; };
 		2E7A064055074768B327485B /* libPods-PokeDex_VOIQ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PokeDex_VOIQ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A7DD57FA80A9C085FA8BFC /* Pods-PokeDex_VOIQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDex_VOIQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDex_VOIQ/Pods-PokeDex_VOIQ.debug.xcconfig"; sourceTree = "<group>"; };
+		D90EECDD1D8F9931008F8E61 /* PDV_Type_PokeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Type_PokeApi.h; sourceTree = "<group>"; };
+		D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Type_PokeApi.m; sourceTree = "<group>"; };
 		D92072AB1D889778004E3F82 /* pokedex.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pokedex.json; sourceTree = "<group>"; };
 		D92072AE1D8899C3004E3F82 /* PDV_Pokemon_Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDV_Pokemon_Obj.h; sourceTree = "<group>"; };
 		D92072AF1D8899C3004E3F82 /* PDV_Pokemon_Obj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDV_Pokemon_Obj.m; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 				D9D7553F1D8D329000F5F8DB /* PDV_Obj_PokeApi.m */,
 				D9D755621D8F52E300F5F8DB /* PDV_Gender_PokeApi.h */,
 				D9D755631D8F52E300F5F8DB /* PDV_Gender_PokeApi.m */,
+				D90EECDD1D8F9931008F8E61 /* PDV_Type_PokeApi.h */,
+				D90EECDE1D8F9931008F8E61 /* PDV_Type_PokeApi.m */,
 				D9D755421D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.h */,
 				D9D755431D8D33F100F5F8DB /* PDV_ParcialPokemon_PokeAPi.m */,
 			);
@@ -617,6 +622,7 @@
 				D935CE311D879A5300C79EF3 /* main.m in Sources */,
 				D935CE3A1D879A5300C79EF3 /* DetailViewController.m in Sources */,
 				D9D7555A1D8E592100F5F8DB /* PDV_CellMenuTableViewCell.m in Sources */,
+				D90EECDF1D8F9931008F8E61 /* PDV_Type_PokeApi.m in Sources */,
 				D9D755401D8D329000F5F8DB /* PDV_Obj_PokeApi.m in Sources */,
 				D92072B01D8899C3004E3F82 /* PDV_Pokemon_Obj.m in Sources */,
 				D9E4668C1D88BB810031F13F /* NSDictionary+StripNSNulls.m in Sources */,

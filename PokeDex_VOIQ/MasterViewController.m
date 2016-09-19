@@ -18,8 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     // Button Grid
     UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
     addButtonR.tintColor = [UIColor whiteColor];
@@ -33,7 +31,9 @@
     //
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    [self LoadParcialPokemonWebService]; // Load Pokemon
+   [self LoadParcialPokemonWebService]; // Load Pokemon
+   // [self LoadPokemonWebService];
+    
     //Refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [ UIColor lightGrayColor];
@@ -46,6 +46,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
+    // [self LoadPokemonWebService];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,21 +110,16 @@
     [tableView registerNib:[UINib nibWithNibName:@"PDV_CellHome" bundle:nil] forCellReuseIdentifier:@"CellHome"];
     cellHome =[tableView dequeueReusableCellWithIdentifier:@"CellHome"];
     
-
     
     PDV_Obj_PokeApi *Poke = self.PokemonInWebService[indexPath.row];
     NSString *nameBasePokemon = [ self checkGenderPokemon:Poke.name_objPokeAPI];
+    cellHome.namePokemon.text = [nameBasePokemon capitalizedString] ;
     
-     cellHome.namePokemon.text = [nameBasePokemon capitalizedString] ;
-   // 721
-    NSString *id_temp= [NSString stringWithFormat:@"%d",(int)indexPath.row + 1];
-    if ([id_temp intValue] >= 722) {
-        
-    }
-    cellHome.id_universalPokemon.text = [NSString stringWithFormat:@"%d",(int)indexPath.row + 1] ;
+       cellHome.id_universalPokemon.text = [self returnID_PokeAPI:Poke] ;
+    
    
    
-    NSString *cadenaURL = [NSString stringWithFormat:@"%@%d.png",kURLMedia_PokeApi,(int)indexPath.row+1];
+    NSString *cadenaURL = [NSString stringWithFormat:@"%@%@.png",kURLMedia_PokeApi,[self returnID_PokeAPI:Poke] ];
     __weak UIImageView *weakImageView = cellHome.imagemPokemon;
     
     
@@ -145,6 +141,16 @@
     
     
     return cellHome;
+}
+-(NSString *)returnID_PokeAPI:(PDV_Obj_PokeApi *)PokeAPI{
+    
+    NSString *onlyNumber = [[PokeAPI.url_objPokeAPI componentsSeparatedByCharactersInSet:
+                            [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                           componentsJoinedByString:@""];
+    NSString *onlyID = [onlyNumber substringWithRange:NSMakeRange(1, [onlyNumber length]-1)];
+    
+    return onlyID;
+
 }
 #pragma mark - CheckGener
 -(NSString *)checkGenderPokemon:(NSString * )NamePokemon{
@@ -234,40 +240,60 @@
     hud.color =[ UIColor lightGrayColor];
     hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
     
+    for (int i = 0; i < 811; i++) {
+        [self loadData:i];
+    }
     
-    PDV_WebService *webservice = [PDV_WebService webservice];
+     [self.tableView reloadData];
     
-    [webservice getAllPokemonOnSucess:^(NSMutableArray *allPokemon) {
-        // NSLog(@"Ok Get");
-        NSMutableArray *TempArray = [[allPokemon arrayByAddingObjectsFromArray:self.PokemonInWebService] mutableCopy];
-        self.PokemonInWebService =TempArray;
-        [self.tableView reloadData];
+
+    
+    
+}
+
+
+-(void)loadData:(int)pokemonID {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    //hud.color =[ UIColor colorWithRed:(238/255.0) green:(21/255.0) blue:(21/255.0) alpha:0.8];
+    hud.color =[ UIColor lightGrayColor];
+    hud.labelText = NSLocalizedString(@"Loading...", @"Download DataBase");
+    
+     PDV_WebService *webservice = [PDV_WebService webservice];
+    [webservice getDataOnePokemon: [NSString stringWithFormat:@"%d",pokemonID] sucessBlock:^(PDV_Pokemon_Obj *Pokemon) {
         
-        [hud hide:YES];
-        [self AlertHUD:@"Complete" nameImage:@"Checkmark" delay:@"2"];
-        
-        
-    } onFailure:^(NSError *error) {
-        NSLog(@"Error Get %@" ,error.description);
-        
-        [hud hide:YES];
-        [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
-        UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-        }];
-        [alertControllerWS addAction:okAction];
-        [self presentViewController:alertControllerWS animated:YES completion:nil];
-    }] ;
-    [webservice getParcialPokemon:kURLPokemonIDPokeApi sucessBlock:^(NSMutableArray *ParcialPokemon, NSString *URLNext) {
-        //NSLog(@"Parcial Pokemon\n %@ \n \nURL\n%@",ParcialPokemon,URLNext);
+        [self.PokemonInWebService addObject:Pokemon];
         
     } onFailure:^(NSError *error) {
         NSLog(@"Error Get %@" ,error.description);
     }];
     
+//    NSString *url = [NSString stringWithFormat:@"http://pokeapi.co/api/v2/pokemon/%d/", pokemonID];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    [manager GET:url parameters:nil progress:^(NSProgress *downloadProgress) {
+//        NSLog(@"Progress \n %@",downloadProgress);
+//    }success:^(NSURLSessionTask *task, id responseObject) {
+//       // [self addPokemon:responseObject];
+//        
+//        
+//    } failure:^(NSURLSessionTask *operation, NSError *error) {
+//        NSLog(@"Error Get %@" ,error.description);
+//        
+//        [hud hide:YES];
+//        [self AlertHUD:@"Error Webservice" nameImage:@"Errormark" delay:@"3"];
+//        UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Error WebService" message:nil preferredStyle:UIAlertControllerStyleAlert];
+//        alertControllerWS.message = [NSString stringWithFormat:@"Code:\n%ld\n\n Detail:\n\n%@",(long)error.code, error.localizedDescription];
+//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+//        }];
+//        [alertControllerWS addAction:okAction];
+//        [self presentViewController:alertControllerWS animated:YES completion:nil];
+//
+//    }];
+//    
     
 }
+
+///////////
+
 -(void)LoadParcialPokemonWebService{
     
     

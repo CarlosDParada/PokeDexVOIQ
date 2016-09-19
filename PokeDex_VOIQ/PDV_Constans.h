@@ -16,7 +16,7 @@
 
 #pragma mark - PokeAPI
 #define KRULBasePokeAPI @"http://pokeapi.co/"
-
+//KRULBasePokeAPI,kURLPokemonIDPokeApi
 #define KRULBasePokeAPIV2 @"api/v2/"
 // only 10 Pokemon @"api/v2/pokemon/?limit=400"
 #define kURLPokemonesPokeApi @"api/v2/pokemon/?limit=400"
