@@ -35,13 +35,13 @@ It also helps not to repeat actions in the background when the user clicks on se
 
 ## View ##
 
-# Home #
+### Home ###
 In this view you observe the list of pokemons of the API, it shows id, image and name.
 The view initially loads the first 20 pokemons according to their universal ID, then when you scroll quickly add the next 20 pokemons, saving the use of the network and the waiting time for the user.
 
 This was done because the API contains 811 pokemons and the process of downloading all these would take longer because the API queries don't return all at once, it would have to take several calls synchronously to preserve order.
 
-# Detail #
+### Detail ###
 
 The view shows a Sprite Image with all the images that have the API for a particular pokemon, besides its name, universal ID, gender, weight and height.
 
