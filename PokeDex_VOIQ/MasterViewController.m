@@ -19,12 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Button Grid
-    UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
-    addButtonR.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = addButtonR;
+    //UIBarButtonItem *addButtonR = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"grid_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(showInfoDeveloper) ];
+    //addButtonR.tintColor = [UIColor whiteColor];
+    //self.navigationItem.rightBarButtonItem = addButtonR;
     
     // Button Left
-    UIBarButtonItem *addButtonL = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pokedex"] style:UIBarButtonItemStyleDone target:self action:@selector(changeToGridView) ];
+    UIBarButtonItem *addButtonL = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pokedex"] style:UIBarButtonItemStyleDone target:self action:@selector(showInfoDeveloper) ];
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = addButtonL;
     
@@ -424,7 +424,7 @@
     return onlyID;
     
 }
--(void)changeToGridView{
+-(void)showInfoDeveloper{
     UIAlertController *alertControllerWS =[UIAlertController alertControllerWithTitle:@"Pokedex VOIQ" message:nil preferredStyle:UIAlertControllerStyleAlert];
     alertControllerWS.message = [NSString stringWithFormat:@"\n Developer \n Carlos Parada \n\n Language \n Objective-C \n\n API \n pokeapi.co \n version 2\n\n Library \n AFNetworking \nMBProgressHUD \n\n"];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

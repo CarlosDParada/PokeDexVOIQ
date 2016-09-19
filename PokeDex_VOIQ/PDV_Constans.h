@@ -23,6 +23,10 @@
 #define kURLPokemonIDPokeApi @"api/v2/pokemon/"
 //http://pokeapi.co/api/v2/pokemon/?offset=0
 
+#define kURLPokemonSpecies @"api/v2/pokemon-species/1/"
+
+// key  flavor_text_entries 3 es / 17 en
+
 // Max 721 pokemon's
 #define kURLMedia_PokeApi @"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
